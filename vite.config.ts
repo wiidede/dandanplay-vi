@@ -31,11 +31,21 @@ export default defineConfig({
         'vue-router',
         '@vueuse/core',
         'pinia',
+        {
+          'axios': [
+            ['default', 'axios'], // import { default as axios } from 'axios',
+          ],
+          'element-plus': [
+            'ElNotification',
+          ],
+        },
       ],
       dts: true,
       dirs: [
         './src/composables',
         './src/store',
+        './src/services',
+        './src/utils/common',
       ],
       vueTemplate: true,
       resolvers: [ElementPlusResolver()],
