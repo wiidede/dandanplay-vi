@@ -1,22 +1,21 @@
 <script setup lang="ts">
+import Worker from '~/utils/dandanMd5.ts?worker'
 const router = useRouter()
 const playerStore = usePlayerStore()
-const { data, post, terminate } = useWebWorker('src/utils/dandanMd5.ts', { type: 'module' })
 const { video, videoInfo } = storeToRefs(playerStore)
+const worker = new Worker()
 watch(video, (val) => {
   if (val) {
     elNotify.info(`读取文件：${videoInfo.value.name}`)
-    post(videoInfo.value.raw)
+    worker.postMessage(videoInfo.value.raw)
     router.push('/player')
   }
 })
-watchEffect(() => {
-  if (data.value) {
-    videoInfo.value.md5 = data.value
-  }
-})
+worker.onmessage = (e) => {
+  videoInfo.value.md5 = e.data
+}
 onUnmounted(() => {
-  terminate()
+  worker.terminate()
 })
 </script>
 
