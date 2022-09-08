@@ -32,9 +32,9 @@ export default defineConfig({
         '@vueuse/core',
         'pinia',
         {
-          'axios': [
-            ['default', 'axios'], // import { default as axios } from 'axios',
-          ],
+          'axios': [['default', 'axios']], // import { default as axios } from 'axios',
+          'nplayer': [['default', 'NPlayer']],
+          '@nplayer/danmaku': [['default', 'NPlayerComment']],
           'element-plus': [
             'ElNotification',
           ],
@@ -65,5 +65,18 @@ export default defineConfig({
   // https://github.com/vitest-dev/vitest
   test: {
     environment: 'jsdom',
+  },
+
+  server: {
+    // host: '0.0.0.0',
+    port: 9000,
+    open: true,
+    proxy: { // 反向代理
+      '/proxy': {
+        target: 'https://api.dandanplay.net/api/v2/',
+        changeOrigin: true,
+        rewrite: rePath => rePath.replace(/^\/proxy/, ''),
+      },
+    },
   },
 })

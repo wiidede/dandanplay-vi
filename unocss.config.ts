@@ -28,6 +28,9 @@ export default defineConfig({
       },
     }),
   ],
+  rules: [
+    [/^flex-(\d+)$/, ([, d]) => ({ flex: `${Number(d)}` })],
+  ],
   // transformers: [
   //   transformerDirectives(),
   //   transformerVariantGroup(),

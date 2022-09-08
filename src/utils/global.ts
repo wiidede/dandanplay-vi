@@ -10,7 +10,10 @@ axios.defaults.timeout = 10000
 // 添加响应拦截器
 axios.interceptors.response.use((response) => {
   const data = response.data
-  if (data.success) {
+  if (!Object.prototype.hasOwnProperty.call(data, 'success')) {
+    return data
+  }
+  else if (data.success) {
     return data
   }
   else {

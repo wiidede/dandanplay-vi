@@ -6,6 +6,9 @@ body,
   padding: 0;
 }
 
-html.dark {
-  background: #121212;
+html {
+  --bg-blur-effect-color: rgba(255, 255, 255, 0.7);
+  &.dark {
+    --bg-blur-effect-color: rgba(32, 32, 32, 0.7);
+  }
 }

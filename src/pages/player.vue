@@ -1,31 +1,78 @@
 <script setup lang="ts">
 const playerStore = usePlayerStore()
-const { video, videoInfo, match } = storeToRefs(playerStore)
+const { video, videoInfo, match, comments } = storeToRefs(playerStore)
 const md5 = computed(() => videoInfo.value.md5)
-const getMatchInfo = async () => {
+
+const commentOption = {
+  autoInsert: true,
+}
+const player = new NPlayer({
+  src: video.value,
+  plugins: [new NPlayerComment(commentOption)],
+})
+const nPlayerRef = ref<HTMLDivElement>()
+onMounted(() => {
+  player.mount(nPlayerRef.value)
+})
+onUnmounted(() => {
+  player.dispose()
+})
+
+const getMatchInfo = async (fileHash: string) => {
   const res = await getMatchInfoApi({
     fileName: videoInfo.value.name,
-    fileHash: videoInfo.value.md5!,
+    fileHash,
     fileSize: videoInfo.value.size,
   })
-  if (res.isMatched)
+  if (res.isMatched) {
     match.value = res.matches[0]
+  }
 }
-watch(md5, (val, oldVal) => {
+const getComment = async (episodeId: number) => {
+  const res = await getCommentApi(episodeId)
+  if (res.count) {
+    comments.value = res.comments.map(dandan2nPlayer)
+    elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)
+    player.danmaku.resetItems(comments.value.sort((a, b) => a.time - b.time))
+    player.play()
+  }
+}
+watch(video, (val) => {
   if (val) {
-    ElNotification(`Hash计算完成：${md5.value}`)
-    getMatchInfo()
+    player.updateOptions({
+      src: val,
+    })
   }
 })
-watch(match, (val, oldVal) => {
-  if (val)
-    ElNotification(`弹幕库匹配成功：${match.value?.animeTitle} - ${match.value?.episodeTitle}`)
+watch(md5, (val) => {
+  if (val) {
+    elNotify.info(`Hash计算完成：${val}`)
+    getMatchInfo(val)
+  }
+})
+watch(match, (val) => {
+  if (val) {
+    elNotify.info(`视频匹配成功：${val.animeTitle} - ${val.episodeTitle}`)
+    getComment(val.episodeId)
+  }
 })
 </script>
 
 <template>
-  <video v-if="video" ref="video" class="w-full" controls :src="video" />
-  <div v-else>
-    请先上传视频
+  <div v-if="match" mx12>
+    {{ match.animeTitle }}
+  </div>
+  <div v-if="match" mx12>
+    {{ match.episodeTitle }}
+  </div>
+  <div flex gap12 mx12>
+    <div ref="nPlayerRef" flex-7 :class="{ disabled: !match }" />
+    <div flex-3 flex-grow-0 h80vh overflow-auto />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.disabled {
+  pointer-events: none;
+}
+</style>

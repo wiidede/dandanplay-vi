@@ -1,3 +1,4 @@
+import type { IComment } from '~/typings/comment'
 import type { IMatch } from '~/typings/match'
 export const usePlayerStore = defineStore('play-player', () => {
   const _videoUrl = ref('')
@@ -15,6 +16,7 @@ export const usePlayerStore = defineStore('play-player', () => {
     md5: '',
   })
   const match = ref<IMatch>()
+  const comments = ref<IComment[]>([])
 
   const setVideo = (file: File) => {
     _videoUrl.value = URL.createObjectURL(file)
@@ -27,5 +29,5 @@ export const usePlayerStore = defineStore('play-player', () => {
     _videoUrl.value = ''
   }
 
-  return { video, videoInfo, match, setVideo, clearVideo }
+  return { video, videoInfo, match, comments, setVideo, clearVideo }
 })
