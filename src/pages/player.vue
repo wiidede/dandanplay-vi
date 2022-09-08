@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { PromiseValue } from 'type-fest'
-
 const playerStore = usePlayerStore()
 const { video, videoInfo, match, comments } = storeToRefs(playerStore)
 const md5 = computed(() => videoInfo.value.md5)
@@ -32,7 +30,7 @@ const getMatchInfo = async (fileHash: string) => {
     match.value = res.matches[0]
   }
 }
-const handleResult = (res: PromiseValue<ReturnType<typeof getCommentApi>>) => {
+const handleResult = (res: Awaited<ReturnType<typeof getCommentApi>>) => {
   if (res.count) {
     comments.value = res.comments.map(dandan2nPlayer)
     elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)
@@ -43,9 +41,11 @@ const handleResult = (res: PromiseValue<ReturnType<typeof getCommentApi>>) => {
 const userInputRes = (url: string) => {
   ElMessageBox.prompt(`<span>请手动将<a target="_blank" href="${url}">请求</a>结果复制到此</span>`, '提示', {
     confirmButtonText: '确定',
-    cancelButtonText: '取消',
+    cancelButtonText: '请求',
     dangerouslyUseHTMLString: true,
     customClass: 'mono-input-popper',
+    inputType: 'textarea',
+    showClose: false,
   }).then(({ value }) => {
     try {
       const res = JSON.parse(value)
@@ -56,6 +56,7 @@ const userInputRes = (url: string) => {
       elNotify.error('解析失败')
     }
   }).catch(() => {
+    window.open(url, '_blank')
     userInputRes(url)
   })
 }

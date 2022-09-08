@@ -35,9 +35,6 @@ export default defineConfig({
           'axios': [['default', 'axios']], // import { default as axios } from 'axios',
           'nplayer': [['default', 'NPlayer']],
           '@nplayer/danmaku': [['default', 'NPlayerComment']],
-          'element-plus': [
-            'ElNotification',
-          ],
         },
       ],
       dts: true,
