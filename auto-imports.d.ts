@@ -9,6 +9,8 @@ declare global {
   const $shallowRef: typeof import('vue/macros')['$shallowRef']
   const $toRef: typeof import('vue/macros')['$toRef']
   const EffectScope: typeof import('vue')['EffectScope']
+  const ElMessage: typeof import('element-plus/es')['ElMessage']
+  const ElMessageBox: typeof import('element-plus/es')['ElMessageBox']
   const ElNotification: typeof import('element-plus')['ElNotification']
   const NPlayer: typeof import('nplayer')['default']
   const NPlayerComment: typeof import('@nplayer/danmaku')['default']
@@ -44,6 +46,7 @@ declare global {
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCommentApi: typeof import('./src/services/comment')['getCommentApi']
+  const getCommentUrl: typeof import('./src/services/comment')['getCommentUrl']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getMatchInfoApi: typeof import('./src/services/match')['getMatchInfoApi']
@@ -302,6 +305,8 @@ declare module '@vue/runtime-core' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly ElMessage: UnwrapRef<typeof import('element-plus/es')['ElMessage']>
+    readonly ElMessageBox: UnwrapRef<typeof import('element-plus/es')['ElMessageBox']>
     readonly ElNotification: UnwrapRef<typeof import('element-plus')['ElNotification']>
     readonly NPlayer: UnwrapRef<typeof import('nplayer')['default']>
     readonly NPlayerComment: UnwrapRef<typeof import('@nplayer/danmaku')['default']>
@@ -337,6 +342,7 @@ declare module '@vue/runtime-core' {
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCommentApi: UnwrapRef<typeof import('./src/services/comment')['getCommentApi']>
+    readonly getCommentUrl: UnwrapRef<typeof import('./src/services/comment')['getCommentUrl']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getMatchInfoApi: UnwrapRef<typeof import('./src/services/match')['getMatchInfoApi']>

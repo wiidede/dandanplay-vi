@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { PromiseValue } from 'type-fest'
+
 const playerStore = usePlayerStore()
 const { video, videoInfo, match, comments } = storeToRefs(playerStore)
 const md5 = computed(() => videoInfo.value.md5)
@@ -8,7 +10,7 @@ const commentOption = {
 }
 const player = new NPlayer({
   src: video.value,
-  controls: [['play', 'spacer', 'danmaku-settings'], ['progress']],
+  controls: [['play', 'volume', 'time', 'spacer', 'airplay', 'danmaku-settings', 'settings', 'web-fullscreen', 'fullscreen'], ['progress']],
   plugins: [new NPlayerComment(commentOption)],
 })
 const nPlayerRef = ref<HTMLDivElement>()
@@ -29,13 +31,40 @@ const getMatchInfo = async (fileHash: string) => {
     match.value = res.matches[0]
   }
 }
-const getComment = async (episodeId: number) => {
-  const res = await getCommentApi(episodeId)
+const handleResult = (res: PromiseValue<ReturnType<typeof getCommentApi>>) => {
   if (res.count) {
     comments.value = res.comments.map(dandan2nPlayer)
     elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)
     player.danmaku.resetItems(comments.value.sort((a, b) => a.time - b.time))
     player.play()
+  }
+}
+const userInputRes = (url: string) => {
+  ElMessageBox.prompt(`<span>请手动将<a target="_blank" href="${url}">请求</a>结果复制到此</span>`, '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    dangerouslyUseHTMLString: true,
+    customClass: 'mono-input-popper',
+  }).then(({ value }) => {
+    try {
+      const res = JSON.parse(value)
+      handleResult(res)
+    }
+    catch (error) {
+      userInputRes(url)
+      elNotify.error('解析失败')
+    }
+  }).catch(() => {
+    userInputRes(url)
+  })
+}
+const getComment = async (episodeId: number) => {
+  const res = await getCommentApi(episodeId, { withRelated: true }).catch((error) => {
+    elNotify.error(`弹幕匹配失败：${error}`)
+    userInputRes(getCommentUrl(episodeId, { withRelated: 'true' }))
+  })
+  if (res) {
+    handleResult(res)
   }
 }
 watch(video, (val) => {
@@ -60,15 +89,12 @@ watch(match, (val) => {
 </script>
 
 <template>
-  <div v-if="match" mx12>
-    {{ match.animeTitle }}
-  </div>
-  <div v-if="match" mx12>
-    {{ match.episodeTitle }}
-  </div>
-  <div flex gap12 mx12>
-    <div ref="nPlayerRef" flex-7 :class="{ disabled: !match }" class="n-player-container" />
-    <div flex-3 flex-grow-0 h80vh overflow-auto />
+  <div mx-auto w80vw>
+    <template v-if="match">
+      <div>{{ match.animeTitle }}</div>
+      <div>{{ match.episodeTitle }}</div>
+    </template>
+    <div ref="nPlayerRef" :class="{ disabled: !match }" class="n-player-container" />
   </div>
 </template>
 

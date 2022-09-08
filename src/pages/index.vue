@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Worker from '~/utils/dandanMd5.ts?worker'
+
+const worker = new Worker()
 const router = useRouter()
 const playerStore = usePlayerStore()
 const { video, videoInfo } = storeToRefs(playerStore)
-const worker = new Worker()
 watch(video, (val) => {
   if (val) {
     elNotify.info(`读取文件：${videoInfo.value.name}`)

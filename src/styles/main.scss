@@ -6,6 +6,10 @@ body,
   padding: 0;
 }
 
+a {
+  color: var(--el-color-primary);
+}
+
 html {
   --bg-blur-effect-color: rgba(255, 255, 255, 0.7);
   &.dark {
@@ -18,5 +22,11 @@ body {
 
   .nplayer_danmaku_item {
     text-shadow: var(--comment-text-shadow);
+  }
+}
+
+.mono-input-popper {
+  input {
+    font-family: monospace;
   }
 }
