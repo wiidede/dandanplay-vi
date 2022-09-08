@@ -14,4 +14,6 @@ export const useSettingsStore = defineStore('play-settings', () => {
   }
 
   return { textShadow, nextTextShadow }
+}, {
+  persist: true,
 })

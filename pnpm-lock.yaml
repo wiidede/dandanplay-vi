@@ -16,6 +16,7 @@ specifiers:
   jsdom: ^20.0.0
   nplayer: ^1.0.15
   pinia: ^2.0.22
+  pinia-plugin-persistedstate: ^2.1.1
   pnpm: ^7.11.0
   sass: ^1.54.8
   spark-md5: ^3.0.2
@@ -39,6 +40,7 @@ dependencies:
   element-plus: 2.2.16_vue@3.2.39
   nplayer: 1.0.15
   pinia: 2.0.22_l2oatbueq4zmnlmgggxhoql4nu
+  pinia-plugin-persistedstate: 2.1.1_pinia@2.0.22
   spark-md5: 3.0.2
   vue: 3.2.39
   vue-router: 4.1.5_vue@3.2.39
@@ -3931,6 +3933,17 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
+
+  /pinia-plugin-persistedstate/2.1.1_pinia@2.0.22:
+    resolution: {integrity: sha512-HUgsU5IRtM75eAQiIqzT3p1oPEuYH1/B2ipTMU++yE+FV0LkHaBswdKXs0RMWYCmugO8s62oxLTh/N1dLNp+5A==}
+    peerDependencies:
+      pinia: ^2.0.0
+    peerDependenciesMeta:
+      pinia:
+        optional: true
+    dependencies:
+      pinia: 2.0.22_l2oatbueq4zmnlmgggxhoql4nu
+    dev: false
 
   /pinia/2.0.22_l2oatbueq4zmnlmgggxhoql4nu:
     resolution: {integrity: sha512-u+b8/BC+tmvo3ACbYO2w5NfxHWFOjvvw9DQnyT0dW8aUMCPRQT5QnfZ5R5W2MzZBMTeZRMQI7V/QFbafmM9QHw==}

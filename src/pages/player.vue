@@ -7,6 +7,7 @@ const md5 = computed(() => videoInfo.value.md5)
 
 const commentOption = {
   autoInsert: false,
+  persistOptions: true,
 }
 const player = new NPlayer({
   src: video.value,
