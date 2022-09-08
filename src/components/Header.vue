@@ -7,7 +7,7 @@ const activeName = ref('/')
 const menuList = [
   { label: '首页', path: '/' },
   { label: '播放器', path: '/player' },
-  // { label: '设置', path: '/settings' },
+  { label: '设置', path: '/settings' },
 ]
 
 router.afterEach((to) => {
@@ -24,7 +24,7 @@ watch(() => activeName.value, (path) => {
 <template>
   <header flex items-center gap4 p-x-4 select-none>
     <div i-carbon-campsite inline-block />
-    <span>vitesse-lite-play</span>
+    <span>Vitesse Player Lite</span>
     <el-tabs v-model="activeName" class="header-tabs flex-auto">
       <el-tab-pane v-for="menu in menuList" :key="menu.path" :label="menu.label" :name="menu.path" />
     </el-tabs>

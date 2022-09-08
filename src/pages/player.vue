@@ -4,10 +4,11 @@ const { video, videoInfo, match, comments } = storeToRefs(playerStore)
 const md5 = computed(() => videoInfo.value.md5)
 
 const commentOption = {
-  autoInsert: true,
+  autoInsert: false,
 }
 const player = new NPlayer({
   src: video.value,
+  controls: [['play', 'spacer', 'danmaku-settings'], ['progress']],
   plugins: [new NPlayerComment(commentOption)],
 })
 const nPlayerRef = ref<HTMLDivElement>()
@@ -66,7 +67,7 @@ watch(match, (val) => {
     {{ match.episodeTitle }}
   </div>
   <div flex gap12 mx12>
-    <div ref="nPlayerRef" flex-7 :class="{ disabled: !match }" />
+    <div ref="nPlayerRef" flex-7 :class="{ disabled: !match }" class="n-player-container" />
     <div flex-3 flex-grow-0 h80vh overflow-auto />
   </div>
 </template>

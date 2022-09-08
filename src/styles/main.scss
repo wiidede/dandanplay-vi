@@ -12,3 +12,11 @@ html {
     --bg-blur-effect-color: rgba(32, 32, 32, 0.7);
   }
 }
+
+body {
+  --comment-text-shadow: #000 1px 0 1px, #000 0 1px 1px, #000 0 -1px 1px, #000 -1px 0 1px;
+
+  .nplayer_danmaku_item {
+    text-shadow: var(--comment-text-shadow);
+  }
+}
