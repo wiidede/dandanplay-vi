@@ -24,7 +24,7 @@ watch(() => activeName.value, (path) => {
 <template>
   <header flex items-center gap4 p-x-4 select-none>
     <div i-carbon-campsite inline-block />
-    <span>Vitesse DanDanPlayer</span>
+    <span>DanDanPlayer Vitesse</span>
     <el-tabs v-model="activeName" class="header-tabs flex-auto">
       <el-tab-pane v-for="menu in menuList" :key="menu.path" :label="menu.label" :name="menu.path" />
     </el-tabs>
