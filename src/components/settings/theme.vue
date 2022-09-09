@@ -17,6 +17,7 @@ const colorList = [
         v-for="c in colorList" :key="c" :label="c" border
         :style="{ color: c }"
       />
+      <el-color-picker v-model="color" />
     </el-radio-group>
   </div>
 </template>
