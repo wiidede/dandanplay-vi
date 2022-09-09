@@ -25,7 +25,7 @@ watch(color, val => setColor(val), { immediate: true })
   <el-config-provider :locale="zhCn">
     <Header />
   </el-config-provider>
-  <main font-sans p="y-4" text="gray-700 dark:gray-200">
+  <main font-sans p="t4 m20" text="gray-700 dark:gray-200">
     <router-view v-slot="{ Component }">
       <keep-alive>
         <component :is="Component" />
