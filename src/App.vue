@@ -9,7 +9,7 @@ const colorCssVarDark = useCssVar('--el-color-primary-dark2', document.body)
 const colorEffects = [3, 5, 7, 8, 9].map((level) => {
   const colorCssVar = useCssVar(`--el-color-primary-light-${level}`, document.body)
   return (val: string) => {
-    colorCssVar.value = tinycolor(val).lighten(level * level).setAlpha(level * 8).toString('rgb')
+    colorCssVar.value = tinycolor(val).lighten(level * 2).setAlpha(1 - level / 10).toString('rgb')
   }
 })
 const setColor = (val: string) => {
@@ -25,7 +25,7 @@ watch(color, val => setColor(val), { immediate: true })
   <el-config-provider :locale="zhCn">
     <Header />
   </el-config-provider>
-  <main font-sans p="x-4 y-10" text="gray-700 dark:gray-200">
+  <main font-sans p="y-4" text="gray-700 dark:gray-200">
     <router-view v-slot="{ Component }">
       <keep-alive>
         <component :is="Component" />

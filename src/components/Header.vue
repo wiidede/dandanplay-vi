@@ -22,17 +22,17 @@ watch(() => activeName.value, (path) => {
 </script>
 
 <template>
-  <header flex items-center gap4 p-x-4 select-none>
-    <div i-carbon-campsite inline-block />
-    <span>DanDanPlayer Vitesse</span>
-    <el-tabs v-model="activeName" class="header-tabs flex-auto">
+  <header flex items-center gap4 p-x-4 select-none relative>
+    <div i-carbon-campsite inline-block flex-shrink-0 />
+    <span class="header-title">DanDanPlayer Vitesse</span>
+    <el-tabs v-model="activeName" class="header-tabs flex-auto overflow-hidden">
       <el-tab-pane v-for="menu in menuList" :key="menu.path" :label="menu.label" :name="menu.path" />
     </el-tabs>
-    <button icon-btn @click="toggleDark()">
+    <button icon-btn ml-auto @click="toggleDark()">
       <div dark:i-carbon-moon i-carbon-sun />
     </button>
     <a
-      icon-btn i-carbon-logo-github
+      icon-btn i-carbon-logo-github flex-shrink-0
       rel="noreferrer"
       href="https://github.com/wiidede/DanDanPlayer-vitesse"
       target="_blank"
@@ -67,6 +67,12 @@ header {
       }
     }
 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-title {
+    display: none;
   }
 }
 </style>

@@ -91,7 +91,7 @@ watch(match, (val) => {
 </script>
 
 <template>
-  <div mx-auto w80vw>
+  <div mx-auto w80vw class="player-container">
     <template v-if="match">
       <div>{{ match.animeTitle }}</div>
       <div>{{ match.episodeTitle }}</div>
@@ -103,5 +103,11 @@ watch(match, (val) => {
 <style lang="scss" scoped>
 .disabled {
   pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+  .player-container {
+    width: 100vw;
+  }
 }
 </style>

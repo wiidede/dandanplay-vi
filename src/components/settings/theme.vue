@@ -13,10 +13,7 @@ const colorList = [
   <div class="setting-item optional-item">
     <span>主题色</span>
     <el-radio-group v-model="color" my2>
-      <el-radio
-        v-for="c in colorList" :key="c" :label="c" border
-        :style="{ color: c }"
-      />
+      <el-radio v-for="c in colorList" :key="c" :label="c" border :style="{ color: c }" />
       <el-color-picker v-model="color" />
     </el-radio-group>
   </div>
@@ -30,6 +27,18 @@ const colorList = [
 
   .el-radio {
     margin: 0;
+  }
+}
+
+:deep(.el-color-picker) {
+  .el-color-picker__trigger {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .el-radio-group {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
