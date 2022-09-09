@@ -9,8 +9,8 @@ declare global {
   const $shallowRef: typeof import('vue/macros')['$shallowRef']
   const $toRef: typeof import('vue/macros')['$toRef']
   const EffectScope: typeof import('vue')['EffectScope']
-  const ElMessageBox: typeof import('element-plus/es')['ElMessageBox']
-  const ElNotification: typeof import('element-plus/es')['ElNotification']
+  const ElMessageBox: typeof import('element-plus')['ElMessageBox']
+  const ElNotification: typeof import('element-plus')['ElNotification']
   const NPlayer: typeof import('nplayer')['default']
   const NPlayerComment: typeof import('@nplayer/danmaku')['default']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
@@ -113,6 +113,7 @@ declare global {
   const templateRef: typeof import('@vueuse/core')['templateRef']
   const throttledRef: typeof import('@vueuse/core')['throttledRef']
   const throttledWatch: typeof import('@vueuse/core')['throttledWatch']
+  const tinycolor: typeof import('tinycolor2')['default']
   const toRaw: typeof import('vue')['toRaw']
   const toReactive: typeof import('@vueuse/core')['toReactive']
   const toRef: typeof import('vue')['toRef']
@@ -305,8 +306,8 @@ declare module '@vue/runtime-core' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly ElMessageBox: UnwrapRef<typeof import('element-plus/es')['ElMessageBox']>
-    readonly ElNotification: UnwrapRef<typeof import('element-plus/es')['ElNotification']>
+    readonly ElMessageBox: UnwrapRef<typeof import('element-plus')['ElMessageBox']>
+    readonly ElNotification: UnwrapRef<typeof import('element-plus')['ElNotification']>
     readonly NPlayer: UnwrapRef<typeof import('nplayer')['default']>
     readonly NPlayerComment: UnwrapRef<typeof import('@nplayer/danmaku')['default']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
@@ -409,6 +410,7 @@ declare module '@vue/runtime-core' {
     readonly templateRef: UnwrapRef<typeof import('@vueuse/core')['templateRef']>
     readonly throttledRef: UnwrapRef<typeof import('@vueuse/core')['throttledRef']>
     readonly throttledWatch: UnwrapRef<typeof import('@vueuse/core')['throttledWatch']>
+    readonly tinycolor: UnwrapRef<typeof import('tinycolor2')['default']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toReactive: UnwrapRef<typeof import('@vueuse/core')['toReactive']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>

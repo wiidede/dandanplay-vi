@@ -43,7 +43,7 @@ const userInputRes = (url: string) => {
     confirmButtonText: '确定',
     cancelButtonText: '请求',
     dangerouslyUseHTMLString: true,
-    customClass: 'mono-input-popper',
+    customClass: 'input-popper',
     inputType: 'textarea',
     showClose: false,
   }).then(({ value }) => {
@@ -61,8 +61,8 @@ const userInputRes = (url: string) => {
   })
 }
 const getComment = async (episodeId: number) => {
-  const res = await getCommentApi(episodeId, { withRelated: true }).catch((error) => {
-    elNotify.error(`弹幕匹配失败：${error}`)
+  const res = await getCommentApi(episodeId, { withRelated: true }).catch(() => {
+    elNotify.error('弹幕匹配失败')
     userInputRes(getCommentUrl(episodeId, { withRelated: 'true' }))
   })
   if (res) {

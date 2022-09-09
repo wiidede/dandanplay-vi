@@ -5,7 +5,9 @@ specifiers:
   '@iconify-json/carbon': ^1.1.7
   '@nplayer/danmaku': ^1.0.12
   '@types/node': ^18.7.15
+  '@types/nprogress': ^0.2.0
   '@types/spark-md5': ^3.0.2
+  '@types/tinycolor2': ^1.4.3
   '@unocss/reset': ^0.45.15
   '@vitejs/plugin-vue': ^3.1.0
   '@vue/test-utils': ^2.0.2
@@ -15,12 +17,14 @@ specifiers:
   eslint: ^8.23.0
   jsdom: ^20.0.0
   nplayer: ^1.0.15
+  nprogress: ^0.2.0
   pinia: ^2.0.22
   pinia-plugin-persistedstate: ^2.1.1
   pnpm: ^7.11.0
   sass: ^1.54.8
   spark-md5: ^3.0.2
   taze: ^0.8.0
+  tinycolor2: ^1.4.2
   type-fest: ^2.19.0
   typescript: ^4.8.2
   unocss: ^0.45.15
@@ -39,9 +43,11 @@ dependencies:
   axios: 0.27.2
   element-plus: 2.2.16_vue@3.2.39
   nplayer: 1.0.15
+  nprogress: 0.2.0
   pinia: 2.0.22_l2oatbueq4zmnlmgggxhoql4nu
   pinia-plugin-persistedstate: 2.1.1_pinia@2.0.22
   spark-md5: 3.0.2
+  tinycolor2: 1.4.2
   vue: 3.2.39
   vue-router: 4.1.5_vue@3.2.39
 
@@ -49,7 +55,9 @@ devDependencies:
   '@antfu/eslint-config': 0.26.3_yqf6kl63nyoq5megxukfnom5rm
   '@iconify-json/carbon': 1.1.7
   '@types/node': 18.7.15
+  '@types/nprogress': 0.2.0
   '@types/spark-md5': 3.0.2
+  '@types/tinycolor2': 1.4.3
   '@unocss/reset': 0.45.15
   '@vitejs/plugin-vue': 3.1.0_vite@3.1.0+vue@3.2.39
   '@vue/test-utils': 2.0.2_vue@3.2.39
@@ -524,8 +532,16 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
+    dev: true
+
   /@types/spark-md5/3.0.2:
     resolution: {integrity: sha512-82E/lVRaqelV9qmRzzJ1PKTpyrpnT7mwdneKNJB9hUtypZDMggloDfFUCIqRRx3lYRxteCwXSq9c+W71Vf0QnQ==}
+    dev: true
+
+  /@types/tinycolor2/1.4.3:
+    resolution: {integrity: sha512-Kf1w9NE5HEgGxCRyIcRXR/ZYtDv0V8FVPtYHwLxl0O+maGX0erE77pQlD0gpP+/KByMZ87mOA79SjifhSB3PjQ==}
     dev: true
 
   /@types/unist/2.0.6:
@@ -3627,6 +3643,10 @@ packages:
       set-blocking: 2.0.0
     dev: true
 
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
+
   /nth-check/2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
@@ -4500,6 +4520,10 @@ packages:
     resolution: {integrity: sha512-NFWIw2Gg7EUPdeE8nL1Dc7AMVlk7sOr2PmSNKVuQrZ0YwTOFoshPQ+hcLrgnhK8dTP3FWMCJaf4N+/hXp6lKPw==}
     engines: {node: '>=16.0.0'}
     dev: true
+
+  /tinycolor2/1.4.2:
+    resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
+    dev: false
 
   /tinypool/0.2.4:
     resolution: {integrity: sha512-Vs3rhkUH6Qq1t5bqtb816oT+HeJTXfwt2cbPH17sWHIYKTotQIFPk3tf2fgqRrVyMDVOc1EnPgzIxfIulXVzwQ==}

@@ -1,3 +1,5 @@
+@use './popper.scss' as *;
+
 html,
 body,
 #app {
@@ -6,27 +8,44 @@ body,
   padding: 0;
 }
 
-a {
-  color: var(--el-color-primary);
-}
-
 html {
   --bg-blur-effect-color: rgba(255, 255, 255, 0.7);
+
   &.dark {
     --bg-blur-effect-color: rgba(32, 32, 32, 0.7);
   }
 }
 
 body {
+  --transition-theme: color var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier),
+    background var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);
+}
+
+body {
   --comment-text-shadow: #000 1px 0 1px, #000 0 1px 1px, #000 0 -1px 1px, #000 -1px 0 1px;
+  --comment-text-weight: normal;
 
   .nplayer_danmaku_item {
     text-shadow: var(--comment-text-shadow);
+    font-weight: var(--comment-text-weight);
   }
 }
 
-.mono-input-popper {
-  input {
-    font-family: monospace;
-  }
+// nprogress
+#nprogress .bar {
+  background: var(--el-color-primary);
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--el-color-primary), 0 0 5px var(--el-color-primary);
+}
+
+#nprogress .spinner {
+  top: 50px;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--el-color-primary);
+  border-left-color: var(--el-color-primary);
 }

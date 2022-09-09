@@ -31,5 +31,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Uploader />
+  <Uploader w-80vw mx-auto />
 </template>
