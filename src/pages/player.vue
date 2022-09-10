@@ -81,7 +81,7 @@ watch(md5, (val) => {
     elNotify.info(`Hash计算完成：${val}`)
     getMatchInfo(val)
   }
-})
+}, { immediate: true })
 watch(match, (val) => {
   if (val) {
     elNotify.info(`视频匹配成功：${val.animeTitle} - ${val.episodeTitle}`)
