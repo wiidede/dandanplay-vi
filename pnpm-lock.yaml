@@ -12,6 +12,8 @@ specifiers:
   '@vitejs/plugin-vue': ^3.1.0
   '@vue/test-utils': ^2.0.2
   '@vueuse/core': ^9.2.0
+  artplayer: ^4.5.4
+  artplayer-plugin-danmuku: ^4.4.8
   axios: ^0.27.2
   element-plus: ^2.2.16
   eslint: ^8.23.0
@@ -40,6 +42,8 @@ specifiers:
 dependencies:
   '@nplayer/danmaku': 1.0.12
   '@vueuse/core': 9.2.0_vue@3.2.39
+  artplayer: 4.5.4
+  artplayer-plugin-danmuku: 4.4.8
   axios: 0.27.2
   element-plus: 2.2.16_vue@3.2.39
   nplayer: 1.0.15
@@ -1150,6 +1154,17 @@ packages:
       es-abstract: 1.20.1
       es-shim-unscopables: 1.0.0
     dev: true
+
+  /artplayer-plugin-danmuku/4.4.8:
+    resolution: {integrity: sha512-l7a20i19emzHP//R1UQ4lbkmCbVBEbBazCtHSxUq3H7Pj32Rfft9Tc5afrG5uJEvtkxDKDSBdBavrmwh5aM64w==}
+    dev: false
+
+  /artplayer/4.5.4:
+    resolution: {integrity: sha512-3dw9m6aDPsHwFHzN0Yj8zlPdKbKzxlPcaNgvl1XTbLiPaHY2Lt5BbP1qz/NR2VHmSgaMxmfs/ha1ufZjSbwsEg==}
+    dependencies:
+      option-validator: 2.0.6
+      screenfull: 6.0.2
+    dev: false
 
   /assertion-error/1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
@@ -3146,6 +3161,11 @@ packages:
       object.assign: 4.1.2
     dev: true
 
+  /kind-of/6.0.3:
+    resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /kleur/3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
@@ -3745,6 +3765,12 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
+  /option-validator/2.0.6:
+    resolution: {integrity: sha512-tmZDan2LRIRQyhUGvkff68/O0R8UmF+Btmiiz0SmSw2ng3CfPZB9wJlIjHpe/MKUZqyIZkVIXCrwr1tIN+0Dzg==}
+    dependencies:
+      kind-of: 6.0.3
+    dev: false
+
   /optionator/0.8.3:
     resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
     engines: {node: '>= 0.8.0'}
@@ -4244,6 +4270,11 @@ packages:
     dependencies:
       xmlchars: 2.2.0
     dev: true
+
+  /screenfull/6.0.2:
+    resolution: {integrity: sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: false
 
   /scule/0.3.2:
     resolution: {integrity: sha512-zIvPdjOH8fv8CgrPT5eqtxHQXmPNnV/vHJYffZhE43KZkvULvpCTvOt1HPlFaCZx287INL9qaqrZg34e8NgI4g==}

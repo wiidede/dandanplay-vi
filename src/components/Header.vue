@@ -1,14 +1,16 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const router = useRouter()
+const settingsStore = useSettingsStore()
+const { player, menuList } = storeToRefs(settingsStore)
 
 const activeName = ref('/')
-const menuList = [
-  { label: '首页', path: '/' },
-  { label: '播放器', path: '/player' },
-  { label: '设置', path: '/settings' },
-]
+watchEffect(() => {
+  menuList.value = [
+    { label: '首页', name: 'index', path: '/' },
+    { label: '播放器', name: player.value.slice(1), path: player.value },
+    { label: '设置', name: 'settings', path: '/settings' },
+  ]
+})
 
 router.afterEach((to) => {
   if (activeName.value !== to.path) {
@@ -26,7 +28,7 @@ watch(() => activeName.value, (path) => {
     <div i-carbon-campsite inline-block flex-shrink-0 />
     <span class="header-title">DanDanPlayer Vitesse</span>
     <el-tabs v-model="activeName" class="header-tabs flex-auto overflow-hidden">
-      <el-tab-pane v-for="menu in menuList" :key="menu.path" :label="menu.label" :name="menu.path" />
+      <el-tab-pane v-for="menu in menuList" :key="menu.name" :label="menu.label" :name="menu.path" />
     </el-tabs>
     <button icon-btn ml-auto @click="toggleDark()">
       <div dark:i-carbon-moon i-carbon-sun />

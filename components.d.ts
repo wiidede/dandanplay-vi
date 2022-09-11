@@ -22,8 +22,11 @@ declare module '@vue/runtime-core' {
     Footer: typeof import('./src/components/Footer.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     NPlayerSettings: typeof import('./src/components/settings/nPlayerSettings.vue')['default']
+    PlayerLayout: typeof import('./src/components/PlayerLayout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    System: typeof import('./src/components/settings/system.vue')['default']
+    SystemSettings: typeof import('./src/components/settings/systemSettings.vue')['default']
     Theme: typeof import('./src/components/settings/theme.vue')['default']
     Uploader: typeof import('./src/components/Uploader.vue')['default']
   }

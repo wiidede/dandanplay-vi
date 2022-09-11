@@ -10,20 +10,15 @@ export const useNPlayerSettingsConst = () => {
     shadow: '阴影',
     none: '无',
   } as const
-  const textWeightList = ['lighter', 'normal', 'bold', 'bolder'] as const
-  const textWeightLabelMap = {
-    lighter: '细',
-    normal: '正常',
-    bold: '粗',
-    bolder: '加粗',
-  } as const
+  const textWeightList = new Array(9).fill(0).map((_, index) => {
+    return `${index * 100 + 100}`
+  })
 
   return {
     textShadowMap,
     textShadowList,
     textShadowLabelMap,
     textWeightList,
-    textWeightLabelMap,
   }
 }
 

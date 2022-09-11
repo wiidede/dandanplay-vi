@@ -34,6 +34,7 @@ declare global {
   const createSharedComposable: typeof import('@vueuse/core')['createSharedComposable']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
   const customRef: typeof import('vue')['customRef']
+  const dandan2artPlayer: typeof import('./src/utils/common/index')['dandan2artPlayer']
   const dandan2nPlayer: typeof import('./src/utils/common/index')['dandan2nPlayer']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
@@ -220,6 +221,7 @@ declare global {
   const usePageLeave: typeof import('@vueuse/core')['usePageLeave']
   const useParallax: typeof import('@vueuse/core')['useParallax']
   const usePermission: typeof import('@vueuse/core')['usePermission']
+  const usePlayer: typeof import('./src/composables/player')['usePlayer']
   const usePlayerStore: typeof import('./src/store/player')['usePlayerStore']
   const usePointer: typeof import('@vueuse/core')['usePointer']
   const usePointerSwipe: typeof import('@vueuse/core')['usePointerSwipe']
@@ -250,11 +252,11 @@ declare global {
   const useStyleTag: typeof import('@vueuse/core')['useStyleTag']
   const useSupported: typeof import('@vueuse/core')['useSupported']
   const useSwipe: typeof import('@vueuse/core')['useSwipe']
+  const useSystemSettings: typeof import('./src/composables/setting-system')['useSystemSettings']
   const useTemplateRefsList: typeof import('@vueuse/core')['useTemplateRefsList']
   const useTextDirection: typeof import('@vueuse/core')['useTextDirection']
   const useTextSelection: typeof import('@vueuse/core')['useTextSelection']
   const useTextareaAutosize: typeof import('@vueuse/core')['useTextareaAutosize']
-  const useThemeSettings: typeof import('./src/composables/setting-theme')['useThemeSettings']
   const useThrottle: typeof import('@vueuse/core')['useThrottle']
   const useThrottleFn: typeof import('@vueuse/core')['useThrottleFn']
   const useThrottledRefHistory: typeof import('@vueuse/core')['useThrottledRefHistory']
@@ -334,6 +336,7 @@ declare module '@vue/runtime-core' {
     readonly createSharedComposable: UnwrapRef<typeof import('@vueuse/core')['createSharedComposable']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
+    readonly dandan2artPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2artPlayer']>
     readonly dandan2nPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2nPlayer']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
@@ -520,6 +523,7 @@ declare module '@vue/runtime-core' {
     readonly usePageLeave: UnwrapRef<typeof import('@vueuse/core')['usePageLeave']>
     readonly useParallax: UnwrapRef<typeof import('@vueuse/core')['useParallax']>
     readonly usePermission: UnwrapRef<typeof import('@vueuse/core')['usePermission']>
+    readonly usePlayer: UnwrapRef<typeof import('./src/composables/player')['usePlayer']>
     readonly usePlayerStore: UnwrapRef<typeof import('./src/store/player')['usePlayerStore']>
     readonly usePointer: UnwrapRef<typeof import('@vueuse/core')['usePointer']>
     readonly usePointerSwipe: UnwrapRef<typeof import('@vueuse/core')['usePointerSwipe']>
@@ -550,11 +554,11 @@ declare module '@vue/runtime-core' {
     readonly useStyleTag: UnwrapRef<typeof import('@vueuse/core')['useStyleTag']>
     readonly useSupported: UnwrapRef<typeof import('@vueuse/core')['useSupported']>
     readonly useSwipe: UnwrapRef<typeof import('@vueuse/core')['useSwipe']>
+    readonly useSystemSettings: UnwrapRef<typeof import('./src/composables/setting-system')['useSystemSettings']>
     readonly useTemplateRefsList: UnwrapRef<typeof import('@vueuse/core')['useTemplateRefsList']>
     readonly useTextDirection: UnwrapRef<typeof import('@vueuse/core')['useTextDirection']>
     readonly useTextSelection: UnwrapRef<typeof import('@vueuse/core')['useTextSelection']>
     readonly useTextareaAutosize: UnwrapRef<typeof import('@vueuse/core')['useTextareaAutosize']>
-    readonly useThemeSettings: UnwrapRef<typeof import('./src/composables/setting-theme')['useThemeSettings']>
     readonly useThrottle: UnwrapRef<typeof import('@vueuse/core')['useThrottle']>
     readonly useThrottleFn: UnwrapRef<typeof import('@vueuse/core')['useThrottleFn']>
     readonly useThrottledRefHistory: UnwrapRef<typeof import('@vueuse/core')['useThrottledRefHistory']>

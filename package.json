@@ -13,6 +13,8 @@
   "dependencies": {
     "@nplayer/danmaku": "^1.0.12",
     "@vueuse/core": "^9.2.0",
+    "artplayer": "^4.5.4",
+    "artplayer-plugin-danmuku": "^4.4.8",
     "axios": "^0.27.2",
     "element-plus": "^2.2.16",
     "nplayer": "^1.0.15",

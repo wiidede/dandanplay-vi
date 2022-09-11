@@ -6,7 +6,6 @@ const {
   textShadowList,
   textShadowLabelMap,
   textWeightList,
-  textWeightLabelMap,
 } = useNPlayerSettingsConst()
 </script>
 
@@ -17,17 +16,15 @@ const {
   <div class="setting-item optional-item">
     <span>弹幕阴影</span>
     <el-radio-group v-model="textShadow">
-      <el-radio-button v-for="shadow in textShadowList" :key="shadow" :label="shadow">
+      <el-radio v-for="shadow in textShadowList" :key="shadow" :label="shadow" border>
         {{ textShadowLabelMap[shadow] }}
-      </el-radio-button>
+      </el-radio>
     </el-radio-group>
   </div>
   <div class="setting-item optional-item">
     <span>弹幕字重</span>
     <el-radio-group v-model="textWeight">
-      <el-radio-button v-for="weight in textWeightList" :key="weight" :label="weight">
-        {{ textWeightLabelMap[weight] }}
-      </el-radio-button>
+      <el-radio v-for="weight in textWeightList" :key="weight" :label="weight" border />
     </el-radio-group>
   </div>
 </template>

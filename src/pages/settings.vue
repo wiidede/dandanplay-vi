@@ -1,8 +1,8 @@
 <script setup>
-import Theme from '~/components/settings/theme.vue'
+import SystemSettings from '~/components/settings/systemSettings.vue'
 import NPlayerSettings from '~/components/settings/nPlayerSettings.vue'
 const settings = [
-  { name: '主题', component: Theme },
+  { name: '系统设置', component: SystemSettings },
   { name: 'NPlayer', component: NPlayerSettings },
 ]
 </script>
@@ -43,12 +43,32 @@ const settings = [
   }
 
   :deep(.setting-item) {
-    padding: 0 16px;
-    min-height: 50px;
+    padding: 16px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     transition: var(--transition-theme);
+
+    .el-radio-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+
+      .el-radio {
+        margin: 0;
+        min-width: 110px;
+      }
+    }
+
+    .el-color-picker__trigger {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      .el-radio-group {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
     @media screen and (max-width: 768px) {
       &.optional-item {

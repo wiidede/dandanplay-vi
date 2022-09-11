@@ -1,4 +1,4 @@
-export const useThemeSettings = () => {
+export const useSystemSettings = () => {
   const settingsStore = useSettingsStore()
   const { color } = storeToRefs(settingsStore)
   const colorCssVar = useCssVar('--el-color-primary', document.body)
@@ -6,7 +6,7 @@ export const useThemeSettings = () => {
   const colorEffects = [3, 5, 7, 8, 9].map((level) => {
     const colorCssVar = useCssVar(`--el-color-primary-light-${level}`, document.body)
     return (val: string) => {
-      colorCssVar.value = tinycolor(val).lighten(level * 2).setAlpha(1 - level / 10).toString('rgb')
+      colorCssVar.value = tinycolor(val).lighten(level * 1).setAlpha(1 - level / 10).toString('rgb')
     }
   })
   const setColor = (val: string) => {
