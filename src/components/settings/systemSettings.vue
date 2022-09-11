@@ -8,6 +8,14 @@ const colorList = [
   '#99582A', '#FF99C8', '#0353A4',
   '#70E000', '#57CC99', '#464646',
 ] as const
+
+watch(player, (val) => {
+  if (val) {
+    setTimeout(() => {
+      location.reload()
+    }, 10)
+  }
+})
 </script>
 
 <template>
