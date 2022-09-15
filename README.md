@@ -1,7 +1,8 @@
 # dandanplay web简易实现
 
-> 由于dandanplay开发平台获取弹幕接口重定向后不允许跨域，可能需要手动输入返回结果
-> 我在safari遇到了首次加载，web worker接受不到消息，setTimeout也没响应的问题，暂时还未定位原因
+> 由于dandanplay开发平台获取弹幕接口重定向后不允许跨域，可能需要手动输入返回结果。
+
+## [Demo](https://dandanplay-vitesse.netlify.app/)
 
 ## TODO
 
