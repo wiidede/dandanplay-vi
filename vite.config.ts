@@ -32,10 +32,8 @@ export default defineConfig({
         '@vueuse/core',
         'pinia',
         {
-          'axios': [['default', 'axios']], // import { default as axios } from 'axios',
-          'nplayer': [['default', 'NPlayer']],
-          '@nplayer/danmaku': [['default', 'NPlayerComment']],
-          'tinycolor2': [['default', 'tinycolor']],
+          axios: [['default', 'axios']], // import { default as axios } from 'axios',
+          tinycolor2: [['default', 'tinycolor']],
         },
       ],
       dts: true,

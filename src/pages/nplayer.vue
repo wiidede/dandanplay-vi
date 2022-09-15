@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import NPlayer from 'nplayer'
+import NPlayerComment from '@nplayer/danmaku'
 import type { GetCommentApiReturnType } from '~/typings/comment'
 
 const playerStore = usePlayerStore()
