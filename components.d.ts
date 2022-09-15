@@ -8,14 +8,8 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./src/components/Counter.vue')['default']
-    ElCard: typeof import('element-plus/es')['ElCard']
-    ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElRadio: typeof import('element-plus/es')['ElRadio']
-    ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
-    ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
-    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElUpload: typeof import('element-plus/es')['ElUpload']
@@ -25,9 +19,7 @@ declare module '@vue/runtime-core' {
     PlayerLayout: typeof import('./src/components/PlayerLayout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    System: typeof import('./src/components/settings/system.vue')['default']
     SystemSettings: typeof import('./src/components/settings/systemSettings.vue')['default']
-    Theme: typeof import('./src/components/settings/theme.vue')['default']
     Uploader: typeof import('./src/components/Uploader.vue')['default']
   }
 }

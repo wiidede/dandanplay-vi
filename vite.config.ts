@@ -36,10 +36,6 @@ export default defineConfig({
           'nplayer': [['default', 'NPlayer']],
           '@nplayer/danmaku': [['default', 'NPlayerComment']],
           'tinycolor2': [['default', 'tinycolor']],
-          'element-plus': [
-            'ElNotification',
-            'ElMessageBox',
-          ],
         },
       ],
       dts: true,

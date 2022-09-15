@@ -10,8 +10,6 @@ import '@unocss/reset/tailwind.css'
 import './styles/main.scss'
 import 'uno.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import 'element-plus/es/components/notification/style/css'
-import 'element-plus/es/components/message-box/style/css'
 
 import './utils/global'
 
