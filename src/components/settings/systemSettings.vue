@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const settingsStore = useSettingsStore()
 const { player, color } = storeToRefs(settingsStore)
-const playerList = ['/nplayer', '/artplayer'] as const
+const playerList = ['/nplayer', '/artplayer', '/video'] as const
 const colorList = [
   '#FFBE0B', '#FB5607', '#FF006E',
   '#8338EC', '#3A86FF', '#00F5D4',
@@ -23,7 +23,7 @@ watch(player, (val) => {
     <span>播放器</span>
     <el-radio-group v-model="player">
       <el-radio v-for="p in playerList" :key="p" :label="p" border>
-        {{ p.slice(1) }}
+        {{ p === '/video' ? `${p.slice(1)}(α)` : p.slice(1) }}
       </el-radio>
     </el-radio-group>
   </div>

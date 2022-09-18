@@ -1,6 +1,6 @@
 import type { GetCommentApiReturnType } from '~/typings/comment'
 
-export const usePlayer = (handleCommentResult: (res: GetCommentApiReturnType) => void) => {
+export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
   const playerStore = usePlayerStore()
   const { videoInfo, match } = storeToRefs(playerStore)
   const md5 = computed(() => videoInfo.value.md5)
@@ -27,7 +27,7 @@ export const usePlayer = (handleCommentResult: (res: GetCommentApiReturnType) =>
     }).then(({ value }) => {
       try {
         const res = JSON.parse(value)
-        handleCommentResult(res)
+        handleCommentResult && handleCommentResult(res)
       }
       catch (error) {
         userInputRes(url)
@@ -44,7 +44,7 @@ export const usePlayer = (handleCommentResult: (res: GetCommentApiReturnType) =>
       userInputRes(getCommentUrl(episodeId, { withRelated: 'true' }))
     })
     if (res) {
-      handleCommentResult(res)
+      handleCommentResult && handleCommentResult(res)
     }
   }
 
@@ -57,7 +57,9 @@ export const usePlayer = (handleCommentResult: (res: GetCommentApiReturnType) =>
   watch(match, (val) => {
     if (val) {
       elNotify.info(`视频匹配成功：${val.animeTitle} - ${val.episodeTitle}`)
-      getComment(val.episodeId)
+      if (handleCommentResult) {
+        getComment(val.episodeId)
+      }
     }
   })
 }
