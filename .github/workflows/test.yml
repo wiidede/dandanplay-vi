@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node_version: [14.x, 16.x]
+        node_version: [16.x] // [14.x, 16.x]
         os: [ubuntu-latest, windows-latest]
       fail-fast: false
 
@@ -34,9 +34,6 @@ jobs:
       - name: Install
         run: pnpm i
 
-      - name: Build
-        run: pnpm run build
-
       - name: Test
         run: pnpm run test
 
@@ -45,3 +42,6 @@ jobs:
 
       - name: TypeCheck
         run: pnpm run typecheck
+
+      - name: Build
+        run: pnpm run build
