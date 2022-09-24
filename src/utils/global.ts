@@ -1,5 +1,5 @@
 axios.defaults.baseURL = 'https://api.dandanplay.net/api/v2/'
-axios.defaults.timeout = 10000
+axios.defaults.timeout = 30000
 
 // axios.interceptors.request.use((config) => {
 //   return config
