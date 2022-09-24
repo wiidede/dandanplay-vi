@@ -8,6 +8,7 @@ import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
 import './styles/main.scss'
+import 'normalize.css'
 import 'uno.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 

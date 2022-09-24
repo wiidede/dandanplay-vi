@@ -1,4 +1,4 @@
-import type { ICommentArt, ICommentN } from '~/typings/comment'
+import type { ICommentArt, ICommentCCL, ICommentN } from '~/typings/comment'
 import type { IMatch } from '~/typings/match'
 export const usePlayerStore = defineStore('play-player', () => {
   const _videoUrl = ref('')
@@ -16,7 +16,7 @@ export const usePlayerStore = defineStore('play-player', () => {
     md5: '',
   })
   const match = ref<IMatch>()
-  const comments = ref<ICommentN[] | ICommentArt>([])
+  const comments = ref<ICommentN[] | ICommentArt[] | ICommentCCL[]>([])
 
   const setVideo = (file: File) => {
     URL.revokeObjectURL(_videoUrl.value)

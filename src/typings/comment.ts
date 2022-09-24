@@ -23,6 +23,14 @@ export interface ICommentArt {
   mode: 0 | 1 // 弹幕模式: 0表示滚动、1静止
 }
 
+export interface ICommentCCL {
+  text: string
+  stime: number
+  color: number
+  mode: number
+  size: number
+}
+
 interface ICommentParams {
   from?: number
   withRelated?: boolean

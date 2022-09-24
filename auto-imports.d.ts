@@ -32,6 +32,7 @@ declare global {
   const createSharedComposable: typeof import('@vueuse/core')['createSharedComposable']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
   const customRef: typeof import('vue')['customRef']
+  const dandan2CCL: typeof import('./src/utils/common/index')['dandan2CCL']
   const dandan2artPlayer: typeof import('./src/utils/common/index')['dandan2artPlayer']
   const dandan2nPlayer: typeof import('./src/utils/common/index')['dandan2nPlayer']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
@@ -332,6 +333,7 @@ declare module '@vue/runtime-core' {
     readonly createSharedComposable: UnwrapRef<typeof import('@vueuse/core')['createSharedComposable']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
+    readonly dandan2CCL: UnwrapRef<typeof import('./src/utils/common/index')['dandan2CCL']>
     readonly dandan2artPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2artPlayer']>
     readonly dandan2nPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2nPlayer']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>

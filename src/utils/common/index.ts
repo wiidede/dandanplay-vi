@@ -1,5 +1,5 @@
 import SparkMD5 from 'spark-md5'
-import type { ICommentArt, ICommentN, ICommentRaw } from '~/typings/comment'
+import type { ICommentArt, ICommentCCL, ICommentN, ICommentRaw } from '~/typings/comment'
 
 export const elNotify = {
   success: (message: string) => {
@@ -63,6 +63,18 @@ export const dandan2artPlayer = (danComment: ICommentRaw) => {
     mode: dan2artTypeMap[type as 1 | 4 | 5],
   }
   return artComment
+}
+
+export const dandan2CCL = (danComment: ICommentRaw) => {
+  const [stime, type, color] = danComment.p.split(',').map(i => Number(i))
+  const CCLComment: ICommentCCL = {
+    color,
+    text: danComment.m,
+    stime: stime * 1000,
+    mode: type as 1 | 4 | 5,
+    size: 25,
+  }
+  return CCLComment
 }
 
 export const calcDandanMd5 = (file: File) => {
