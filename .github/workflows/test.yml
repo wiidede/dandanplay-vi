@@ -34,14 +34,16 @@ jobs:
       - name: Install
         run: pnpm i
 
+      - name: Build
+        run: pnpm run build
+
+      - name: TypeCheck
+        run: pnpm run typecheck
+
       - name: Test
         run: pnpm run test
 
       - name: Lint
         run: pnpm run lint
 
-      - name: TypeCheck
-        run: pnpm run typecheck
 
-      - name: Build
-        run: pnpm run build
