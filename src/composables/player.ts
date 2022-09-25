@@ -1,12 +1,15 @@
 import type { GetCommentApiReturnType } from '~/typings/comment'
 
+const getMatchInfoMemo = useAsyncMemoizeStorage(getMatchInfoApi, 'DanDan_MatchInfo')
+const getCommentMemo = useAsyncMemoizeStorage(getCommentApi, 'Comment')
+
 export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
   const playerStore = usePlayerStore()
   const { videoInfo, match } = storeToRefs(playerStore)
   const md5 = computed(() => videoInfo.value.md5)
 
   const getMatchInfo = async (fileHash: string) => {
-    const res = await getMatchInfoApi({
+    const res = await getMatchInfoMemo({
       fileName: videoInfo.value.name,
       fileHash,
       fileSize: videoInfo.value.size,
@@ -39,7 +42,7 @@ export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) =
     })
   }
   const getComment = async (episodeId: number) => {
-    const res = await getCommentApi(episodeId, { withRelated: true }).catch(() => {
+    const res = await getCommentMemo(episodeId, { withRelated: true }).catch(() => {
       elNotify.error('弹幕匹配失败')
       userInputRes(getCommentUrl(episodeId, { withRelated: 'true' }))
     })

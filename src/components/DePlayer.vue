@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { omit } from 'lodash-es'
 import { CommentManager } from '~/libs/CCL'
 import '~/libs/CCL.css'
 import type { ICommentCCL } from '~/typings/comment'
@@ -76,9 +77,10 @@ defineExpose({
 </script>
 
 <template>
-  <div id="my-player" ref="videoContainerRef" class="de-player w-fit h-fit relative flex-center overflow-hidden">
-    <video ref="videoRef" v-bind="$attrs" controlslist="nofullscreen" @click="togglePlay" />
-    <div id="my-comment-stage" ref="commentRef" class="comment-container" />
+  <div ref="videoContainerRef" class="de-player relative flex-center overflow-hidden">
+    <video ref="videoRef" v-bind="omit($attrs, 'class', 'style')" controlslist="nofullscreen" class="w-full" @click="togglePlay" />
+    <!-- <div absolute top-0 bottom-0 right-0 left-0 /> -->
+    <div ref="commentRef" class="comment-container" />
     <div
       c="white"
       absolute top-0 bottom-0 right-0 flex-center flex-col transition-300
