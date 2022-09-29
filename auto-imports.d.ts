@@ -42,7 +42,7 @@ declare global {
   const defineStore: typeof import('pinia')['defineStore']
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
   const effectScope: typeof import('vue')['effectScope']
-  const elNotify: typeof import('./src/utils/common/index')['elNotify']
+  const elNotify: typeof import('./src/utils/common/el')['elNotify']
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCommentApi: typeof import('./src/services/comment')['getCommentApi']
@@ -344,7 +344,7 @@ declare module '@vue/runtime-core' {
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly elNotify: UnwrapRef<typeof import('./src/utils/common/index')['elNotify']>
+    readonly elNotify: UnwrapRef<typeof import('./src/utils/common/el')['elNotify']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCommentApi: UnwrapRef<typeof import('./src/services/comment')['getCommentApi']>
