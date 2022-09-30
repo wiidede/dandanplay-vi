@@ -43,6 +43,8 @@
           transform-origin: 0% 0%;
   white-space: pre;
   word-break: keep-all;
+  /* custom */
+  opacity: var(--comment-opacity, 1);
 }
 
 .de-player .comment-container .cmt.no-shadow {

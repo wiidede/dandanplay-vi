@@ -210,9 +210,9 @@ CommentManager.prototype.clear = function () {
   this.dispatchEvent("clear");
 };
 
-CommentManager.prototype.setBounds = function () {
-  this.width = this.stage.offsetWidth;
-  this.height= this.stage.offsetHeight;
+CommentManager.prototype.setBounds = function (width, height) {
+  this.width = width || this.stage.offsetWidth;
+  this.height= height || this.stage.offsetHeight;
   this.dispatchEvent("resize");
   for (var comAlloc in this.csa) {
     this.csa[comAlloc].setBounds(this.width,this.height);

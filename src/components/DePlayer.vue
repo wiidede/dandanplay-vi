@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { omit } from 'lodash-es'
-import { CommentManager } from '~/libs/CCL'
-import '~/libs/CCL.css'
+import { CommentManager } from '@/CCL'
+import '@/CCL.css'
 import type { ICommentCCL } from '~/typings/comment'
 
 const props = defineProps<{
   comments?: ICommentCCL[]
 }>()
 const emit = defineEmits(['play', 'pause'])
+
+const store = useDePlayerStore()
+const { commentHeight } = storeToRefs(store)
 
 const videoContainerRef = ref<HTMLDivElement>()
 const videoRef = ref<HTMLVideoElement>()
@@ -44,8 +47,15 @@ onMounted(() => {
   commentManager = new CommentManager(commentRef.value)
   commentManager.init()
 
+  const width = ref(0)
+  const height = ref(0)
   useResizeObserver(commentRef.value, (entries) => {
-    commentManager.setBounds()
+    const entry = entries[0]
+    width.value = entry.contentRect.width
+    height.value = entry.contentRect.height
+  })
+  watchEffect(() => {
+    commentManager.setBounds(width.value, height.value * commentHeight.value / 100)
   })
 })
 
@@ -69,6 +79,8 @@ watch(() => props.comments, (val) => {
   }
 })
 
+const [showCommentStyle, toggleShowCommentStyle] = useToggle(false)
+
 defineExpose({
   play,
   pause,
@@ -91,7 +103,10 @@ defineExpose({
       <!-- <div i-carbon-volume-mute cursor-pointer />
       <div i-carbon-volume-down cursor-pointer />
       <div i-carbon-volume-up cursor-pointer /> -->
-      <div i-carbon-chat-operational cursor-pointer />
+      <div relative>
+        <div i-carbon-chat-operational cursor-pointer @click="toggleShowCommentStyle()" />
+        <CommentStyle v-show="showCommentStyle" absolute right-6 class="comment-style" />
+      </div>
       <div i-carbon-chat cursor-pointer />
       <div i-carbon-chat-off cursor-pointer />
       <div i-carbon-closed-caption cursor-pointer />
@@ -103,5 +118,8 @@ defineExpose({
 </template>
 
 <style lang="scss" scoped>
-
+.comment-style {
+  top: 50%;
+  transform: translateY(-50%)
+}
 </style>

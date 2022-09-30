@@ -6,6 +6,7 @@ const { menuList } = storeToRefs(settingsStore)
 
 useSystemSettings()
 useNPlayerSettings()
+useDePlayerSettings()
 </script>
 
 <template>

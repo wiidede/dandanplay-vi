@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CommentStyle: typeof import('./src/components/settings/commentStyle.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
     DePlayer: typeof import('./src/components/DePlayer.vue')['default']
     ElCard: typeof import('element-plus/es')['ElCard']
@@ -15,6 +16,7 @@ declare module '@vue/runtime-core' {
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
+    ElSlider: typeof import('element-plus/es')['ElSlider']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElUpload: typeof import('element-plus/es')['ElUpload']
