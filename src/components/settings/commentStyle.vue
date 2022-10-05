@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const store = useDePlayerStore()
-const { commentOpacity, commentHeight } = storeToRefs(store)
+const { commentOpacity, commentHeight, commentWeight, commentShadow, commentSize } = storeToRefs(store)
+
+const { textShadowLabelMap } = useTextShadow()
 
 const heightMap = {
   25: '1/4',
@@ -12,15 +14,23 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
 </script>
 
 <template>
-  <div class="config-container w70 p4">
+  <div class="config-container w70">
     <div>不透明度</div>
     <el-slider v-model="commentOpacity" :min="10" :max="100" :format-tooltip="val => `${val}%`" />
     <div>显示区域</div>
     <el-slider v-model="commentHeight" :min="25" :max="100" :step="25" :format-tooltip="heightFormatter" :marks="heightMap" />
-    <div>弹幕速度</div>
-    <el-slider :min="10" :max="100" />
+    <!-- <div>弹幕速度</div>
+    <el-slider :min="10" :max="100" /> -->
     <div>字体大小</div>
-    <el-slider :min="10" :max="100" />
+    <el-slider v-model="commentSize" :min="10" :max="128" />
+    <div>弹幕字重</div>
+    <el-slider v-model="commentWeight" :min="100" :max="900" :step="100" />
+    <div>弹幕阴影</div>
+    <el-radio-group v-model="commentShadow" size="small">
+      <el-radio-button v-for="(label, key) in textShadowLabelMap" :key="key" :label="key">
+        {{ label }}
+      </el-radio-button>
+    </el-radio-group>
   </div>
 </template>
 
@@ -29,12 +39,6 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
   display: grid;
   grid-template-columns: 1fr 3fr;
   align-items: center;
-  font-size: 12px;
-  background-color: #000000;
-  color: white;
-  opacity: 0.7;
-  border-radius: var(--el-border-radius-base);
-  box-shadow: var(--el-box-shadow);
 }
 :deep(.el-slider) {
   --el-slider-height: 4px;
@@ -52,6 +56,13 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
     word-break: keep-all;
     margin-top: 10px;
     font-size: 12px;
+  }
+}
+
+:deep(.el-radio-button) {
+  .el-radio-button__inner {
+    --el-text-color-regular: #CFD3DC;
+    --el-fill-color-blank: transparent;
   }
 }
 </style>

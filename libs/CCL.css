@@ -24,15 +24,12 @@
 
 .de-player .comment-container .cmt {
   color: #fff;
-  font-family: SimHei, SimSun, Heiti, "MS Mincho", "Meiryo", "Microsoft YaHei", monospace;
-  font-size: 25px;
   letter-spacing: 0;
   line-height: 100%;
   margin: 0;
   padding: 3px 0 0 0;
   position: absolute;
   text-decoration: none;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   -webkit-text-size-adjust: none;
       -ms-text-size-adjust: none;
           text-size-adjust: none;
@@ -45,6 +42,9 @@
   word-break: keep-all;
   /* custom */
   opacity: var(--comment-opacity, 1);
+  font-size: var(--comment-size, 25px) !important;
+  font-weight: var(--comment-weight, 400);
+  text-shadow: var(--comment-shadow, -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black);
 }
 
 .de-player .comment-container .cmt.no-shadow {
