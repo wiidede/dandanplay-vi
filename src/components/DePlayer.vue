@@ -102,7 +102,7 @@ defineExpose({
 
 <template>
   <div ref="videoContainerRef" class="de-player relative flex-center overflow-hidden bg-black">
-    <video ref="videoRef" v-bind="omit($attrs, 'class', 'style')" controlslist="nofullscreen" class="w-full" @click="togglePlay" />
+    <video ref="videoRef" v-bind="omit($attrs, 'class', 'style')" controlslist="nofullscreen" class="w-full" @click="togglePlay()" />
     <!-- <div absolute top-0 bottom-0 right-0 left-0 /> -->
     <div ref="commentRef" class="comment-container" />
     <div
@@ -111,7 +111,7 @@ defineExpose({
       :style="{ '--un-translate-x': '100%' }"
       :class="idle ? 'transform' : ''"
     >
-      <div :class="playing ? 'i-carbon-pause' : 'i-carbon-play'" cursor-pointer @click="togglePlay" />
+      <div :class="playing ? 'i-carbon-pause' : 'i-carbon-play'" cursor-pointer />
       <!-- <div i-carbon-volume-mute cursor-pointer />
       <div i-carbon-volume-down cursor-pointer />
       <div i-carbon-volume-up cursor-pointer /> -->
@@ -136,7 +136,7 @@ defineExpose({
       <div i-carbon-closed-caption />
       <!-- <div i-carbon-shrink-screen cursor-pointer />
       <div i-carbon-popup cursor-pointer /> -->
-      <div i-carbon-fit-to-screen cursor-pointer @click="toggleFullscreen" />
+      <div i-carbon-fit-to-screen cursor-pointer @click="toggleFullscreen()" />
     </div>
   </div>
 </template>
