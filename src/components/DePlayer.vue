@@ -123,6 +123,7 @@ defineExpose({
         width="fit-content"
         popper-class="comment-style-popper"
         :show-arrow="false"
+        :teleported="false"
       >
         <template #reference>
           <div i-carbon-chat-operational cursor-pointer />
