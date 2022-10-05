@@ -98,7 +98,7 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="videoContainerRef" class="de-player relative flex-center overflow-hidden">
+  <div ref="videoContainerRef" class="de-player relative flex-center overflow-hidden bg-black">
     <video ref="videoRef" v-bind="omit($attrs, 'class', 'style')" controlslist="nofullscreen" class="w-full" @click="togglePlay" />
     <!-- <div absolute top-0 bottom-0 right-0 left-0 /> -->
     <div ref="commentRef" class="comment-container" />
