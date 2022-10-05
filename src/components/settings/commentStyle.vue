@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const store = useDePlayerStore()
-const { commentOpacity, commentHeight, commentWeight, commentShadow, commentSize } = storeToRefs(store)
+const { commentOpacity, commentHeight, commentWeight, commentShadow, commentSize, commentSpeed } = storeToRefs(store)
 
 const { textShadowLabelMap } = useTextShadow()
 
@@ -19,8 +19,8 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
     <el-slider v-model="commentOpacity" :min="10" :max="100" :format-tooltip="val => `${val}%`" />
     <div>显示区域</div>
     <el-slider v-model="commentHeight" :min="25" :max="100" :step="25" :format-tooltip="heightFormatter" :marks="heightMap" />
-    <!-- <div>弹幕速度</div>
-    <el-slider :min="10" :max="100" /> -->
+    <div>弹幕速度</div>
+    <el-slider v-model="commentSpeed" :min="0.5" :max="2" :step="0.1" />
     <div>字体大小</div>
     <el-slider v-model="commentSize" :min="10" :max="128" />
     <div>弹幕字重</div>

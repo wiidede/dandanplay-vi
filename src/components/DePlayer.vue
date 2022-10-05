@@ -11,7 +11,7 @@ const emit = defineEmits(['play', 'pause'])
 
 const store = useDePlayerStore()
 const { toggleShowComment } = store
-const { commentHeight, showComment } = storeToRefs(store)
+const { commentHeight, commentSpeed, showComment } = storeToRefs(store)
 
 const videoContainerRef = ref<HTMLDivElement>()
 const videoRef = ref<HTMLVideoElement>()
@@ -61,6 +61,9 @@ const stopComment = (clear = false) => {
 }
 watch(showComment, (val) => {
   val ? startComment() : stopComment(true)
+})
+watch(commentSpeed, (val) => {
+  commentManager.options.scroll.scale = 1 / val
 })
 
 onMounted(() => {
