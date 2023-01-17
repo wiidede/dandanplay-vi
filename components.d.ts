@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ActionLayout: typeof import('./src/components/ActionLayout.vue')['default']
     CommentStyle: typeof import('./src/components/settings/commentStyle.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
     DePlayer: typeof import('./src/components/DePlayer.vue')['default']

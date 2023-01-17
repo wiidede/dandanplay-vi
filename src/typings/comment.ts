@@ -42,3 +42,4 @@ export type GetCommentApi = (episodeId: number, params?: ICommentParams) => Prom
   comments: ICommentRaw[]
 }>>
 export type GetCommentApiReturnType = Awaited<ReturnType<GetCommentApi>>
+export type GetExternalCommentApi = (url: string) => ReturnType<GetCommentApi>

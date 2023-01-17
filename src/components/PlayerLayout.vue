@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const playerStore = usePlayerStore()
-const { match } = storeToRefs(playerStore)
+const { video, videoInfo, match } = storeToRefs(playerStore)
 
 const title = useTitle('DanDanPlayer Vitesse')
 
@@ -16,9 +16,12 @@ onDeactivated(() => {
 </script>
 
 <template>
-  <div mx-auto w-80vw h-45vw class="player-container" :class="{ disabled: !match }">
+  <div mx-auto w-80vw h-45vw class="player-container" :class="{ disabled: !video }">
     <template v-if="match">
       <h1>{{ match.animeTitle }} - {{ match.episodeTitle }}</h1>
+    </template>
+    <template v-else-if="videoInfo.name">
+      <h1>{{ videoInfo.name }}</h1>
     </template>
     <slot />
   </div>

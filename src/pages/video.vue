@@ -21,6 +21,7 @@ usePlayer(handleResult)
   <player-layout>
     <DePlayer ref="playerRef" :src="video" controls :comments="comments as ICommentCCL[]" />
   </player-layout>
+  <ActionLayout @manual-match="manualMatchComment(handleResult)" />
 </template>
 
 <style lang="scss" scoped>

@@ -3,6 +3,17 @@ import type { GetCommentApiReturnType } from '~/typings/comment'
 const getMatchInfoMemo = useAsyncMemoizeStorage(getMatchInfoApi, 'DanDan_MatchInfo')
 const getCommentMemo = useAsyncMemoizeStorage(getCommentApi, 'Comment')
 
+export const manualMatchComment = async (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
+  const inputValue = await ElMessageBox.prompt('请输入第三方弹幕站（如A/B/C站）的网址url。', '手动匹配', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    inputPattern: /^https?:\/\/.+/,
+    inputErrorMessage: '无效的网址',
+  })
+  const { value } = inputValue
+  const res = await getExternalCommentApi(value)
+  handleCommentResult && handleCommentResult(res)
+}
 export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
   const playerStore = usePlayerStore()
   const { videoInfo, match } = storeToRefs(playerStore)
@@ -16,6 +27,9 @@ export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) =
     })
     if (res.isMatched) {
       match.value = res.matches[0]
+    }
+    else {
+      elNotify.error('匹配失败，请尝试手动匹配')
     }
   }
 
