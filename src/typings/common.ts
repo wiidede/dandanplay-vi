@@ -3,3 +3,11 @@ export type ResponseCommon<T> = T & {
   success: boolean
   errorMessage: string
 }
+
+export interface IStream {
+  id: string
+  name: string
+  info: string
+  getBlobUrl: () => Promise<string>
+  revokeBlobUrl: () => void
+}

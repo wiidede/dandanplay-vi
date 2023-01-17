@@ -92,3 +92,13 @@ export const useAsyncMemoizeStorage = <Result extends Promise<unknown>, Args ext
 //   delete: cacheStorage.value.delete,
 //   clear: cacheStorage.value.clear,
 // }
+
+export const canPlayVideo = (type: string) => {
+  const video = document.createElement('video')
+  return !!video.canPlayType(type)
+}
+
+export const canPlayAudio = (type: string) => {
+  const audio = document.createElement('audio')
+  return !!audio.canPlayType(type)
+}

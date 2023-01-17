@@ -12,6 +12,7 @@
 - [x] 用户自定义主题色
 - [x] 略微适配移动端样式
 - [x] 支持切换播放器
+- [ ] mkv字幕提取
 - [ ] 完善自己的播放器
 - [ ] 手动匹配弹幕库
 - [ ] 手动加入弹幕库
@@ -35,3 +36,10 @@
 - [DanDanPlayer](https://www.dandanplay.com/)
 - [vitesse-lite](https://github.com/antfu/vitesse-lite)
 - [NPlayer](https://github.com/oyuyue/nplayer)
+
+video  ----support?
+  video---md5---match---comment---play
+---- not support?
+  video---md5---match---comment
+  video---mp4/mp3
+    ---play

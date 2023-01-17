@@ -16,7 +16,7 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
 <template>
   <div class="config-container w70">
     <div>不透明度</div>
-    <el-slider v-model="commentOpacity" :min="10" :max="100" :format-tooltip="val => `${val}%`" />
+    <el-slider v-model="commentOpacity" :min="10" :max="100" :format-tooltip="(val: number) => `${val}%`" />
     <div>显示区域</div>
     <el-slider v-model="commentHeight" :min="25" :max="100" :step="25" :format-tooltip="heightFormatter" :marks="heightMap" />
     <div>弹幕速度</div>

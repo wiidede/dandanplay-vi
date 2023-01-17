@@ -1,4 +1,7 @@
+import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'
+
 import type { GetCommentApiReturnType } from '~/typings/comment'
+import type { IStream } from '~/typings/common'
 
 const getMatchInfoMemo = useAsyncMemoizeStorage(getMatchInfoApi, 'DanDan_MatchInfo')
 const getCommentMemo = useAsyncMemoizeStorage(getCommentApi, 'Comment')
@@ -64,5 +67,94 @@ export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) =
         getComment(val.episodeId)
       }
     }
+  })
+}
+
+export const useCC = () => {
+  const playerStore = usePlayerStore()
+  const { video, videoInfo } = storeToRefs(playerStore)
+  const ffmpeg = createFFmpeg({
+    log: true,
+    corePath: '/node_modules/@ffmpeg/core/dist/ffmpeg-core.js',
+  })
+  const audios: Pick<IStream, 'id' | 'name' | 'info'>[] = []
+  const subtitles: Pick<IStream, 'id' | 'name' | 'info'>[] = []
+  const streamReg = /Stream #(\d+:\d+)(?:\((\w+)\))?: (Audio|Video|Subtitle): (.+)/g
+  const titleReg = /\s+title\s*: (.*)/g
+  // get audio and subtitle info
+  ffmpeg.setLogger(({ message }) => {
+    const match = streamReg.exec(message)
+    if (match) {
+      const [, id, name, type, info] = match
+      if (type === 'Audio') {
+        audios.push({ id, name, info })
+      }
+      else if (type === 'Subtitle') {
+        subtitles.push({ id, name, info })
+      }
+    }
+    const titleMatch = titleReg.exec(message)
+    if (titleMatch) {
+      const [, title] = titleMatch
+      subtitles.length && (subtitles[subtitles.length - 1].name += ` (${title})`)
+    }
+  })
+  // write subtitle info
+  const oldFileNames: string[] = []
+  watch(video, async (val) => {
+    oldFileNames.forEach(name => ffmpeg.FS('unlink', name))
+    oldFileNames.length = 0
+    const videoType = videoInfo.value.type
+    const videoName = videoInfo.value.name
+    // mkv
+    if (val && (videoType === 'video/x-matroska' || !canPlayVideo(videoType))) {
+      await ffmpeg.load()
+      ffmpeg.FS('writeFile', videoName, await fetchFile(videoInfo.value.raw!))
+      oldFileNames.push(videoName)
+      await ffmpeg.run('-i', videoName, '-hide_banner')
+      // video
+      // if (!canPlayVideo(videoType)) {
+      //   const newVideoName = videoName.replace(/\.\w+$/, '.mp4')
+      //   await ffmpeg.run('-i', videoName, '-acodec', 'copy', newVideoName)
+      //   oldFileNames.push(newVideoName)
+      //   const data = ffmpeg.FS('readFile', newVideoName)
+      //   const blob = new Blob([data.buffer])
+      //   videoInfo.value.supportVideo = URL.createObjectURL(blob)
+      // }
+      // audio
+      if (audios.length && !canPlayAudio(`audio/${audios[0].info.match(/(\w+)/)![1]}`)) {
+        const newAudioName = videoName.replace(/\.\w+$/, '.mp3')
+        await ffmpeg.run('-i', videoName, '-vn', newAudioName)
+        oldFileNames.push(newAudioName)
+        const data = ffmpeg.FS('readFile', newAudioName)
+        const blob = new File([data.buffer], newAudioName)
+        videoInfo.value.supportAudio = URL.createObjectURL(blob)
+      }
+      // subtitle
+      if (subtitles.length) {
+        videoInfo.value.subtitles = []
+        for (const { id, name, info } of subtitles) {
+          const fileName = `${videoName}.${name}.vtt`
+          let blobUrl = ''
+          const getBlobUrl = async () => {
+            if (blobUrl) {
+              return blobUrl
+            }
+            await ffmpeg.run('-i', videoName, '-map', id, fileName)
+            const data = ffmpeg.FS('readFile', fileName)
+            const blob = new Blob([data.buffer]) // , { type: 'text/plain' })
+            blobUrl = URL.createObjectURL(blob)
+            return blobUrl
+          }
+          const revokeBlobUrl = () => {
+            blobUrl && URL.revokeObjectURL(blobUrl)
+            ffmpeg.FS('unlink', fileName)
+          }
+          videoInfo.value.subtitles.push({ id, name, info, getBlobUrl, revokeBlobUrl })
+        }
+      }
+    }
+  }, {
+    immediate: true,
   })
 }

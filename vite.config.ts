@@ -76,6 +76,10 @@ export default defineConfig({
         rewrite: rePath => rePath.replace(/^\/proxy/, ''),
       },
     },
+    headers: {
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Opener-Policy': 'same-origin',
+    },
   },
 
   worker: {

@@ -6,6 +6,7 @@ import type { ICommentCCL } from '~/typings/comment'
 
 const props = defineProps<{
   comments?: ICommentCCL[]
+  supportAudio?: string
 }>()
 const emit = defineEmits(['play', 'pause'])
 
@@ -93,6 +94,11 @@ onMounted(() => {
   })
 })
 
+// audio
+
+// subtitle
+const subtitle = ref('')
+
 defineExpose({
   play,
   pause,
@@ -102,7 +108,10 @@ defineExpose({
 
 <template>
   <div ref="videoContainerRef" class="de-player relative flex-center overflow-hidden bg-black">
-    <video ref="videoRef" v-bind="omit($attrs, 'class', 'style')" controlslist="nofullscreen" class="w-full" @click="togglePlay()" />
+    <video ref="videoRef" v-bind="omit($attrs, 'class', 'style')" controlslist="nofullscreen" class="w-full" @click="togglePlay()">
+      <source v-if="supportAudio" :src="supportAudio">
+      <track v-if="subtitle" kind="subtitles" :src="subtitle" srclang="en-us" label="de" default>
+    </video>
     <!-- <div absolute top-0 bottom-0 right-0 left-0 /> -->
     <div ref="commentRef" class="comment-container" />
     <div
@@ -133,7 +142,19 @@ defineExpose({
         </template>
         <CommentStyle />
       </el-popover>
-      <div i-carbon-closed-caption />
+      <el-popover
+        placement="left"
+        trigger="click"
+        width="max-content"
+        popper-class="comment-style-popper"
+        :show-arrow="false"
+        :teleported="false"
+      >
+        <template #reference>
+          <div i-carbon-closed-caption />
+        </template>
+        <SubtitleSelector @set-subtitle="(title) => { subtitle = title }" />
+      </el-popover>
       <!-- <div i-carbon-shrink-screen cursor-pointer />
       <div i-carbon-popup cursor-pointer /> -->
       <div i-carbon-fit-to-screen cursor-pointer @click="toggleFullscreen()" />

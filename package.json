@@ -11,6 +11,7 @@
     "up": "taze major -I"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.11.5",
     "@nplayer/danmaku": "^1.0.12",
     "@vueuse/core": "^9.2.0",
     "artplayer": "^4.5.4",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.3",
+    "@ffmpeg/core": "^0.11.0",
     "@iconify-json/carbon": "^1.1.7",
     "@types/node": "^18.7.18",
     "@types/nprogress": "^0.2.0",

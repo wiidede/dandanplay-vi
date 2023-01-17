@@ -1,16 +1,20 @@
 <script setup>
 import SystemSettings from '~/components/settings/systemSettings.vue'
 import NPlayerSettings from '~/components/settings/nPlayerSettings.vue'
+
 const settings = [
   { name: '系统设置', component: SystemSettings },
-  { name: 'NPlayer', component: NPlayerSettings },
 ]
 </script>
 
 <template>
   <div class="view-settings">
     <h1>Settings</h1>
-    <el-card v-for="setting in settings" :key="setting.name" class="setting-part">
+    <el-card
+      v-for="setting in settings"
+      :key="setting.name"
+      class="setting-part"
+    >
       <h4>{{ setting.name }}</h4>
       <component :is="setting.component" />
     </el-card>
