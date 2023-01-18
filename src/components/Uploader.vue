@@ -58,6 +58,9 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
         <li class="el-upload__tip">
           请尽量使用最新版的现代浏览器，以获得最佳的体验。
         </li>
+        <li class="el-upload__tip">
+          由于浏览器video标签限制，部分格式可能无法播放（或者无法解析音轨），可以优先使用最新版的chrome
+        </li>
       </ol>
     </template>
   </ElUpload>
