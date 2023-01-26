@@ -59,12 +59,6 @@ const stopComment = (clear = false) => {
   clear && commentManager.clear()
   pauseTimer()
 }
-watch(showComment, (val) => {
-  val ? startComment() : stopComment(true)
-})
-watch(commentSpeed, (val) => {
-  commentManager.options.scroll.scale = 1 / val
-})
 
 onMounted(() => {
   videoRef.value?.addEventListener('play', () => {
@@ -91,6 +85,14 @@ onMounted(() => {
   watchEffect(() => {
     commentManager.setBounds(width.value, height.value * commentHeight.value / 100)
   })
+
+  watch(commentSpeed, (val) => {
+    commentManager.options.scroll.scale = 1 / val
+  }, { immediate: true })
+
+  watch(showComment, (val) => {
+    val ? startComment() : stopComment(true)
+  }, { immediate: true })
 })
 
 defineExpose({
@@ -132,7 +134,7 @@ defineExpose({
       <div cursor-pointer :class="showComment ? 'i-carbon-chat-off' : 'i-carbon-chat'" @click="toggleShowComment()" />
       <el-popover
         placement="left"
-        trigger="click"
+        trigger="hover"
         width="fit-content"
         popper-class="comment-style-popper"
         :show-arrow="false"
