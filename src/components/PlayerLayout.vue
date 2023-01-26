@@ -16,7 +16,7 @@ onDeactivated(() => {
 </script>
 
 <template>
-  <div mx-auto w-80vw h-45vw class="player-container" :class="{ disabled: !video }">
+  <div mx-auto w-80vw class="player-container" :class="{ disabled: !video }">
     <template v-if="match">
       <h1>{{ match.animeTitle }} - {{ match.episodeTitle }}</h1>
     </template>
