@@ -60,8 +60,14 @@ export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) =
       elNotify.error('弹幕匹配失败')
       userInputRes(getCommentUrl(episodeId, { withRelated: 'true' }))
     })
-    if (res) {
+    if (res && res.count) {
       handleCommentResult && handleCommentResult(res)
+    }
+    else if (res && res.count === 0) {
+      elNotify.warning('没有匹配到任何弹幕，尝试重新匹配')
+    }
+    else {
+      elNotify.error('弹幕匹配失败')
     }
   }
 
