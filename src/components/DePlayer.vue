@@ -11,7 +11,7 @@ const emit = defineEmits(['play', 'pause'])
 
 const store = useDePlayerStore()
 const { toggleShowComment } = store
-const { commentHeight, commentSpeed, showComment } = storeToRefs(store)
+const { commentHeight, commentSpeed, showComment, commentOffset } = storeToRefs(store)
 
 const videoContainerRef = ref<HTMLDivElement>()
 const videoRef = ref<HTMLVideoElement>()
@@ -22,8 +22,8 @@ let commentManager: InstanceType<typeof CommentManager>
 const { toggle: toggleFullscreen } = useFullscreen(videoContainerRef)
 const { idle } = useIdle(2.5 * 1000)
 const { pause: pauseTimer, resume: resumeTimer } = useRafFn(() => {
-  if (!commentManager) { return }
-  commentManager.time(Math.round(videoRef.value!.currentTime * 1000))
+  if (!commentManager || !videoRef.value) { return }
+  commentManager.time(Math.round((videoRef.value.currentTime + (commentOffset.value || 0)) * 1000))
 }, {
   immediate: false,
 })

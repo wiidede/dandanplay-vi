@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const store = useDePlayerStore()
-const { commentOpacity, commentHeight, commentWeight, commentShadow, commentSize, commentSpeed } = storeToRefs(store)
+const { commentOpacity, commentHeight, commentWeight, commentShadow, commentSize, commentSpeed, commentOffset } = storeToRefs(store)
 
 const { textShadowLabelMap } = useTextShadow()
 
@@ -31,6 +31,8 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
         {{ label }}
       </el-radio-button>
     </el-radio-group>
+    <div>弹幕偏移</div>
+    <el-input-number v-model="commentOffset" :precision="1" :step="1" size="small" />
   </div>
 </template>
 
@@ -38,6 +40,7 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
 .config-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  gap: 2px 0;
   align-items: center;
 }
 :deep(.el-slider) {
@@ -64,5 +67,15 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
     --el-text-color-regular: #CFD3DC;
     --el-fill-color-blank: transparent;
   }
+}
+
+:deep(.el-input) {
+  --el-input-text-color: #CFD3DC;
+  --el-input-bg-color: transparent;
+}
+
+:deep(.el-input-number) {
+  --el-text-color-regular: #CFD3DC;
+  --el-fill-color-light: transparent;
 }
 </style>
