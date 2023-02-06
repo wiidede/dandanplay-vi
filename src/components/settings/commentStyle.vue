@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const store = useDePlayerStore()
-const { commentOpacity, commentHeight, commentWeight, commentShadow, commentSize, commentSpeed, commentOffset } = storeToRefs(store)
+const { commentOpacity, commentHeight, commentWeight, commentShadow, commentSize, commentSpeed, commentOffset, commentLimit } = storeToRefs(store)
 
 const { textShadowLabelMap } = useTextShadow()
 
@@ -11,6 +11,12 @@ const heightMap = {
   100: '全屏',
 }
 const heightFormatter = (value: number) => heightMap[value as typeof commentHeight.value]
+const limitMap = {
+  0: '无限',
+  100: '100',
+  200: '200',
+}
+const limitFormatter = (value: number) => value === 0 ? '无限' : value
 </script>
 
 <template>
@@ -25,9 +31,11 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
     <el-slider v-model="commentSize" :min="10" :max="128" />
     <div>弹幕字重</div>
     <el-slider v-model="commentWeight" :min="100" :max="900" :step="100" />
+    <div>同屏数量</div>
+    <el-slider v-model="commentLimit" :min="0" :max="200" :step="1" :format-tooltip="limitFormatter" :marks="limitMap" />
     <div>弹幕阴影</div>
     <el-radio-group v-model="commentShadow" size="small">
-      <el-radio-button v-for="(label, key) in textShadowLabelMap" :key="key" :label="key">
+      <el-radio-button v-for="(label, key) in textShadowLabelMap" :key="key" my2 :label="key">
         {{ label }}
       </el-radio-button>
     </el-radio-group>
@@ -40,7 +48,6 @@ const heightFormatter = (value: number) => heightMap[value as typeof commentHeig
 .config-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 2px 0;
   align-items: center;
 }
 :deep(.el-slider) {

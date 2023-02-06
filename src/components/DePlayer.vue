@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { omit } from 'lodash-es'
-import { CommentManager } from '@/CCL'
 import '@/CCL.css'
+import { CommentManager } from '@/CCL'
 import type { ICommentCCL } from '~/typings/comment'
 
 const props = defineProps<{
@@ -11,7 +11,7 @@ const emit = defineEmits(['play', 'pause'])
 
 const store = useDePlayerStore()
 const { toggleShowComment } = store
-const { commentHeight, commentSpeed, showComment, commentOffset } = storeToRefs(store)
+const { commentHeight, commentSpeed, showComment, commentOffset, commentLimit } = storeToRefs(store)
 
 const videoContainerRef = ref<HTMLDivElement>()
 const videoRef = ref<HTMLVideoElement>()
@@ -88,6 +88,10 @@ onMounted(() => {
 
   watch(commentSpeed, (val) => {
     commentManager.options.scroll.scale = 1 / val
+  }, { immediate: true })
+
+  watch(commentLimit, (val) => {
+    commentManager.options.limit = val
   }, { immediate: true })
 
   watch(showComment, (val) => {

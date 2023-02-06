@@ -6,10 +6,11 @@ export const useDePlayerStore = defineStore('dePlayer-settings', () => {
   const commentSize = ref(25)
   const commentSpeed = ref(1)
   const commentOffset = ref(0)
+  const commentLimit = ref(0)
 
   const [showComment, toggleShowComment] = useToggle(true)
 
-  return { commentShadow, commentWeight, commentHeight, commentOpacity, commentSize, commentSpeed, commentOffset, showComment, toggleShowComment }
+  return { commentShadow, commentWeight, commentHeight, commentOpacity, commentSize, commentSpeed, commentOffset, commentLimit, showComment, toggleShowComment }
 }, {
   persist: {
     afterRestore: (ctx) => {
