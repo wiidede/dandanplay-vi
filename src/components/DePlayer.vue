@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { POPPER_CONTAINER_SELECTOR } from 'element-plus'
 import { omit } from 'lodash-es'
 import '@/CCL.css'
 import { CommentManager } from '@/CCL'
@@ -19,7 +20,7 @@ const commentRef = ref<HTMLDivElement>()
 
 let commentManager: InstanceType<typeof CommentManager>
 
-const { toggle: toggleFullscreen } = useFullscreen(videoContainerRef)
+const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(videoContainerRef)
 const { idle } = useIdle(2.5 * 1000)
 const { pause: pauseTimer, resume: resumeTimer } = useRafFn(() => {
   if (!commentManager || !videoRef.value) { return }
@@ -97,6 +98,17 @@ onMounted(() => {
   watch(showComment, (val) => {
     val ? startComment() : stopComment(true)
   }, { immediate: true })
+
+  watch(isFullscreen, (val) => {
+    const popperContainer = document.querySelector(POPPER_CONTAINER_SELECTOR)
+    if (!popperContainer) { return }
+    if (val) {
+      videoContainerRef.value?.append(popperContainer)
+    }
+    else {
+      document.body.append(popperContainer)
+    }
+  })
 })
 
 defineExpose({
