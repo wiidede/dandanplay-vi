@@ -3,3 +3,5 @@ export interface IMenuItem {
   name: string
   path: string
 }
+
+export type PlayerType = '/nplayer' | '/artplayer' | '/video'

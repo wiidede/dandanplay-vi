@@ -1,7 +1,7 @@
-import type { IMenuItem } from '~/typings/settings'
+import type { IMenuItem, PlayerType } from '~/typings/settings'
 
 export const useSettingsStore = defineStore('play-settings', () => {
-  const player = ref<'/nplayer' | '/artplayer'>('/nplayer')
+  const player = ref<PlayerType>('/video')
   const menuList = ref<IMenuItem[]>([])
   const color = ref('#FF99C8')
   const textShadow = ref<'border' | 'shadow' | 'none'>('border')
