@@ -1,4 +1,4 @@
-export const useSystemSettings = () => {
+export function useSystemSettings() {
   const settingsStore = useSettingsStore()
   const { color } = storeToRefs(settingsStore)
   const colorCssVar = useCssVar('--el-color-primary', document.body)
@@ -18,7 +18,7 @@ export const useSystemSettings = () => {
   watch(color, val => setColor(val), { immediate: true })
 }
 
-export const useNPlayerSettingsConst = () => {
+export function useNPlayerSettingsConst() {
   const textShadowMap = {
     border: '#000 1px 0 1px, #000 0 1px 1px, #000 0 -1px 1px, #000 -1px 0 1px',
     shadow: 'black 0.1em 0.1em 0.2em',
@@ -42,7 +42,7 @@ export const useNPlayerSettingsConst = () => {
   }
 }
 
-export const useNPlayerSettings = () => {
+export function useNPlayerSettings() {
   const settingsStore = useSettingsStore()
   const { textShadow, textWeight } = storeToRefs(settingsStore)
   const {

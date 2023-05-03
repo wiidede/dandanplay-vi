@@ -41,4 +41,3 @@ watch(player, (val) => {
 <style lang="scss" scoped>
 
 </style>
-

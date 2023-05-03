@@ -43,4 +43,3 @@ const {
   justify-content: center;
 }
 </style>
-

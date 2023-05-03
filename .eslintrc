@@ -1,6 +1,7 @@
 {
   "extends": "@antfu",
   "rules": {
-    "curly": ["error", "multi-line"]
+    "curly": ["error", "multi-line"],
+    "max-statements-per-line": ["error", { "max": 2 }]
   }
 }

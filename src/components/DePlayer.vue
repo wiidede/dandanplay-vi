@@ -31,13 +31,13 @@ const { pause: pauseTimer, resume: resumeTimer } = useRafFn(() => {
 
 // play
 const playing = ref(false)
-const play = () => {
+function play() {
   videoRef.value?.play()
 }
-const pause = () => {
+function pause() {
   videoRef.value?.pause()
 }
-const togglePlay = () => {
+function togglePlay() {
   playing.value ? pause() : play()
 }
 
@@ -49,13 +49,13 @@ watch(() => props.comments, (val) => {
     play()
   }
 })
-const startComment = () => {
+function startComment() {
   if (showComment.value) {
     commentManager.start()
     resumeTimer()
   }
 }
-const stopComment = (clear = false) => {
+function stopComment(clear = false) {
   commentManager.stop()
   clear && commentManager.clear()
   pauseTimer()

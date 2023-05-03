@@ -31,7 +31,7 @@ onBeforeUnmount(() => {
   player.destroy(false)
 })
 
-const handleResult = (res: GetCommentApiReturnType) => {
+function handleResult(res: GetCommentApiReturnType) {
   if (res.count) {
     comments.value = res.comments.map(dandan2artPlayer)
     elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)
@@ -70,4 +70,3 @@ watch(video, (val) => {
   }
 }
 </style>
-

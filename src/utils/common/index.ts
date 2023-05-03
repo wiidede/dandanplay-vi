@@ -7,7 +7,7 @@ const dan2nTypeMap = {
   5: 'top',
 } as const
 
-export const dandan2nPlayer = (danComment: ICommentRaw) => {
+export function dandan2nPlayer(danComment: ICommentRaw) {
   const [time, type, color] = danComment.p.split(',').map(i => Number(i))
   const nComment: ICommentN = {
     color: color.toString(16),
@@ -23,7 +23,7 @@ const dan2artTypeMap = {
   4: 1,
   5: 1,
 } as const
-export const dandan2artPlayer = (danComment: ICommentRaw) => {
+export function dandan2artPlayer(danComment: ICommentRaw) {
   const [time, type, color] = danComment.p.split(',').map(i => Number(i))
   const artComment: ICommentArt = {
     color: color.toString(16),
@@ -34,7 +34,7 @@ export const dandan2artPlayer = (danComment: ICommentRaw) => {
   return artComment
 }
 
-export const dandan2CCL = (danComment: ICommentRaw) => {
+export function dandan2CCL(danComment: ICommentRaw) {
   const [stime, type, color] = danComment.p.split(',').map(i => Number(i))
   const CCLComment: ICommentCCL = {
     color,
@@ -46,7 +46,7 @@ export const dandan2CCL = (danComment: ICommentRaw) => {
   return CCLComment
 }
 
-export const calcDandanMd5 = (file: File) => {
+export function calcDandanMd5(file: File) {
   return new Promise<string>((resolve, reject) => {
     const fileReader = new FileReader()
     const spark = new SparkMD5.ArrayBuffer()
@@ -71,7 +71,7 @@ export const calcDandanMd5 = (file: File) => {
   })
 }
 
-export const useAsyncMemoizeStorage = <Result extends Promise<unknown>, Args extends unknown[]>(resolver: (...args: Args) => Result, key: string, storage: Storage = localStorage) => {
+export function useAsyncMemoizeStorage<Result extends Promise<unknown>, Args extends unknown[]>(resolver: (...args: Args) => Result, key: string, storage: Storage = localStorage) {
   const cache = ref(new Map<string, Awaited<Result> | number>())
   const cacheStorage = useStorage(key, cache, storage)
 

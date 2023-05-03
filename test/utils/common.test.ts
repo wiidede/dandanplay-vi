@@ -1,10 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
-const getDataAsync = <T>(data: T, timeout: number): Promise<T> => new Promise((resolve) => {
-  setTimeout(() => {
-    resolve(data)
-  }, timeout)
-})
+function getDataAsync<T>(data: T, timeout: number): Promise<T> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data)
+    }, timeout)
+  })
+}
 
 describe('useAsyncMemoizeStorage', () => {
   const getData = async <T>(data: T) => await getDataAsync(data, 100)

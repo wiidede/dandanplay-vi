@@ -1,6 +1,7 @@
 <script setup>
 import SystemSettings from '~/components/settings/systemSettings.vue'
 import NPlayerSettings from '~/components/settings/nPlayerSettings.vue'
+
 const settings = [
   { name: '系统设置', component: SystemSettings },
   { name: 'NPlayer', component: NPlayerSettings },

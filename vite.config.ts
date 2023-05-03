@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
@@ -8,6 +8,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Unocss from 'unocss/vite'
+
 // import 'comment-core-library/dist/CommentCoreLibrary'
 
 export default defineConfig({

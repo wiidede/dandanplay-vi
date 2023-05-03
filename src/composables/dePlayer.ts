@@ -1,4 +1,4 @@
-export const useTextShadow = () => {
+export function useTextShadow() {
   const textShadowMap = {
     border: '#000 1px 0 1px, #000 0 1px 1px, #000 0 -1px 1px, #000 -1px 0 1px',
     shadow: 'black 0.1em 0.1em 0.2em',
@@ -18,7 +18,7 @@ export const useTextShadow = () => {
   }
 }
 
-export const useDePlayerSettings = () => {
+export function useDePlayerSettings() {
   const { textShadowMap } = useTextShadow()
   const store = useDePlayerStore()
   const { commentOpacity, commentSize, commentWeight, commentShadow } = storeToRefs(store)

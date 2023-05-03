@@ -3,7 +3,7 @@ import type { GetCommentApiReturnType } from '~/typings/comment'
 const getMatchInfoMemo = useAsyncMemoizeStorage(getMatchInfoApi, 'DanDan_MatchInfo')
 const getCommentMemo = useAsyncMemoizeStorage(getCommentApi, 'Comment')
 
-export const manualMatchComment = async (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
+export async function manualMatchComment(handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) {
   const inputValue = await ElMessageBox.prompt('请输入第三方弹幕站（如A/B/C站）的网址url。', '手动匹配', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
@@ -15,7 +15,7 @@ export const manualMatchComment = async (handleCommentResult: ((res: GetCommentA
   handleCommentResult && handleCommentResult(res)
 }
 
-export const manualMatchCommentXML = async (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
+export async function manualMatchCommentXML(handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) {
   const inputValue = await ElMessageBox.prompt('请输入b站XML格式的字符串', '手动匹配', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
@@ -41,7 +41,7 @@ export const manualMatchCommentXML = async (handleCommentResult: ((res: GetComme
   handleCommentResult && handleCommentResult(res)
 }
 
-export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
+export function usePlayer(handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) {
   const playerStore = usePlayerStore()
   const { videoInfo, match } = storeToRefs(playerStore)
   const md5 = computed(() => videoInfo.value.md5)
