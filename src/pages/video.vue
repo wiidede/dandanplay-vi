@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import DePlayer from '~/components/DePlayer.vue'
-import { ICommentCCL } from '~/typings/comment'
-import type { GetCommentApiReturnType } from '~/typings/comment'
+import type { GetCommentApiReturnType, ICommentCCL } from '~/typings/comment'
 
 const playerStore = usePlayerStore()
 const { video, comments } = storeToRefs(playerStore)
+const commentsCCL = computed<ICommentCCL[]>(() => comments.value as ICommentCCL[])
 
 const playerRef = ref<InstanceType<typeof DePlayer>>()
 
@@ -20,7 +20,7 @@ usePlayer(handleResult)
 
 <template>
   <player-layout>
-    <DePlayer ref="playerRef" :src="video" controls :comments="comments as ICommentCCL[]" />
+    <DePlayer ref="playerRef" :src="video" controls :comments="commentsCCL" />
   </player-layout>
   <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
 </template>
