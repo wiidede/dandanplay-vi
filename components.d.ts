@@ -11,7 +11,6 @@ declare module '@vue/runtime-core' {
     CommentStyle: typeof import('./src/components/settings/commentStyle.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
     DePlayer: typeof import('./src/components/DePlayer.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { POPPER_CONTAINER_SELECTOR } from 'element-plus'
+import { usePopperContainerId } from 'element-plus'
 import { omit } from 'lodash-es'
 import '@/CCL.css'
 import { CommentManager } from '@/CCL'
@@ -100,7 +100,7 @@ onMounted(() => {
   }, { immediate: true })
 
   watch(isFullscreen, (val) => {
-    const popperContainer = document.querySelector(POPPER_CONTAINER_SELECTOR)
+    const popperContainer = document.querySelector(usePopperContainerId().selector.value)
     if (!popperContainer) { return }
     if (val) {
       videoContainerRef.value?.append(popperContainer)

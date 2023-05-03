@@ -49,6 +49,8 @@ const limitFormatter = (value: number) => value === 0 ? '无限' : value
   display: grid;
   grid-template-columns: 1fr 3fr;
   align-items: center;
+  grid-gap: 10px 20px;
+  width: max-content;
 }
 :deep(.el-slider) {
   --el-slider-height: 4px;
