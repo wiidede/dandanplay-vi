@@ -62,6 +62,7 @@ declare global {
   const isRef: typeof import('vue')['isRef']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const manualMatchComment: typeof import('./src/composables/player')['manualMatchComment']
+  const manualMatchCommentXML: typeof import('./src/composables/player')['manualMatchCommentXML']
   const mapActions: typeof import('pinia')['mapActions']
   const mapGetters: typeof import('pinia')['mapGetters']
   const mapState: typeof import('pinia')['mapState']
@@ -369,6 +370,7 @@ declare module '@vue/runtime-core' {
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly manualMatchComment: UnwrapRef<typeof import('./src/composables/player')['manualMatchComment']>
+    readonly manualMatchCommentXML: UnwrapRef<typeof import('./src/composables/player')['manualMatchCommentXML']>
     readonly mapActions: UnwrapRef<typeof import('pinia')['mapActions']>
     readonly mapGetters: UnwrapRef<typeof import('pinia')['mapGetters']>
     readonly mapState: UnwrapRef<typeof import('pinia')['mapState']>

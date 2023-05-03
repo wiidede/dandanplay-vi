@@ -14,6 +14,33 @@ export const manualMatchComment = async (handleCommentResult: ((res: GetCommentA
   const res = await getExternalCommentApi(value)
   handleCommentResult && handleCommentResult(res)
 }
+
+export const manualMatchCommentXML = async (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
+  const inputValue = await ElMessageBox.prompt('请输入b站XML格式的字符串', '手动匹配', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+  })
+  const { value } = inputValue
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(value, 'application/xml')
+  // 打印根元素的名称或错误信息
+  const errorNode = doc.querySelector('parsererror')
+  if (errorNode) {
+    elNotify.error('解析XML出错，检查是否是XML格式的字符串')
+    return
+  }
+  const nodeList = Array.from(doc.documentElement.childNodes).filter(node => node.nodeName === 'd')
+  const res: GetCommentApiReturnType = {
+    count: nodeList.length,
+    comments: nodeList.map((node, index) => ({
+      cid: index,
+      p: ((node as any).attributes.p.value as string).replace(/^(\d+),(\d+),\d+,(\d+),.*$/, '$1,$2,$3,0'),
+      m: node.textContent?.trim() || '',
+    })),
+  }
+  handleCommentResult && handleCommentResult(res)
+}
+
 export const usePlayer = (handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) => {
   const playerStore = usePlayerStore()
   const { videoInfo, match } = storeToRefs(playerStore)
