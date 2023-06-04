@@ -26,7 +26,7 @@ const limitFormatter = (value: number) => value === 0 ? '无限' : value
     <div>显示区域</div>
     <el-slider v-model="commentHeight" :min="25" :max="100" :step="25" :format-tooltip="heightFormatter" :marks="heightMap" />
     <div>弹幕速度</div>
-    <el-slider v-model="commentSpeed" :min="0.5" :max="2" :step="0.1" />
+    <el-slider v-model="commentSpeed" :min="0.3" :max="2" :step="0.1" />
     <div>字体大小</div>
     <el-slider v-model="commentSize" :min="10" :max="128" />
     <div>弹幕字重</div>
