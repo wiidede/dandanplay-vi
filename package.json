@@ -11,6 +11,7 @@
     "up": "taze major -I"
   },
   "dependencies": {
+    "@iconify/utils": "^2.1.7",
     "@nplayer/danmaku": "^1.0.12",
     "@vueuse/core": "^9.2.0",
     "artplayer": "^4.5.4",

@@ -25,8 +25,8 @@ watch(() => activeName.value, (path) => {
 
 <template>
   <header flex items-center gap4 p-x-4 select-none relative>
-    <div i-carbon-campsite inline-block flex-shrink-0 />
-    <span class="header-title">DanDanPlayer Vitesse</span>
+    <div i-the-dandanplay-vi class="inline-block flex-shrink-0 primary" />
+    <span class="header-title">DanDanPlay Vi</span>
     <el-tabs v-model="activeName" class="header-tabs flex-auto overflow-hidden">
       <el-tab-pane v-for="menu in menuList" :key="menu.name" :label="menu.label" :name="menu.path" />
     </el-tabs>
@@ -44,6 +44,10 @@ watch(() => activeName.value, (path) => {
 </template>
 
 <style lang="scss" scoped>
+.primary {
+  color: var(--el-color-primary)
+}
+
 header {
   box-shadow: inset 0 -2px 0 0 var(--el-border-color-light);
   position: sticky;

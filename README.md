@@ -1,8 +1,8 @@
-# dandanplay web简易实现
+# dandanplay vi
 
-> 由于dandanplay开发平台获取弹幕接口重定向后不允许跨域，可能需要手动输入返回结果。
+dandanplay web简易实现
 
-## [Demo](https://dandanplay-vitesse.netlify.app/)
+## [Site](https://dandanplay-vitesse.netlify.app/)
 
 ## TODO
 

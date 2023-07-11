@@ -6,7 +6,8 @@
     "danmuku",
     "nplayer",
     "stime",
-    "Vitesse"
+    "Vitesse",
+    "dandanplay"
   ],
   "prettier.enable": false,
   "editor.codeActionsOnSave": {
