@@ -72,13 +72,14 @@ export function calcDandanMd5(file: File) {
 }
 
 export function useAsyncMemoizeStorage<Result extends Promise<unknown>, Args extends unknown[]>(resolver: (...args: Args) => Result, key: string, storage: Storage = localStorage) {
-  const cache = ref(new Map<string, Awaited<Result> | number>())
+  const cache = ref(new Map<string, any>())
   const cacheStorage = useStorage(key, cache, storage)
 
   return async (...args: Args) => {
     const argKey = JSON.stringify(args)
     const lastModified = cacheStorage.value.get('last-modified') as number || 0
-    if (cacheStorage.value.has(argKey) && Date.now() - lastModified < 3 * 60 * 60 * 1000) { return cacheStorage.value.get(argKey) as Awaited<Result> }
+    if (cacheStorage.value.has(argKey) && Date.now() - lastModified < 3 * 60 * 60 * 1000)
+      return cacheStorage.value.get(argKey) as Awaited<Result>
     const result = await resolver(...args)
     cacheStorage.value.set(argKey, result)
     cacheStorage.value.set('last-modified', Date.now())

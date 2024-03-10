@@ -23,7 +23,8 @@ let commentManager: InstanceType<typeof CommentManager>
 const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(videoContainerRef)
 const { idle } = useIdle(2.5 * 1000)
 const { pause: pauseTimer, resume: resumeTimer } = useRafFn(() => {
-  if (!commentManager || !videoRef.value) { return }
+  if (!commentManager || !videoRef.value)
+    return
   commentManager.time(Math.round((videoRef.value.currentTime + (commentOffset.value || 0)) * 1000))
 }, {
   immediate: false,
@@ -101,13 +102,13 @@ onMounted(() => {
 
   watch(isFullscreen, (val) => {
     const popperContainer = document.querySelector(usePopperContainerId().selector.value)
-    if (!popperContainer) { return }
-    if (val) {
+    if (!popperContainer)
+      return
+    if (val)
       videoContainerRef.value?.append(popperContainer)
-    }
-    else {
+
+    else
       document.body.append(popperContainer)
-    }
   })
 })
 
@@ -135,7 +136,7 @@ defineExpose({
     <div ref="commentRef" class="comment-container" />
     <div
       c="white" bg="black op-20" p="y2 x1"
-      absolute right-0 flex-center flex-col transition-300 gap-1
+      absolute right-0 flex-center flex-col gap-1 transition-300
       :style="{ '--un-translate-x': '100%' }"
       :class="idle ? 'transform' : ''"
     >

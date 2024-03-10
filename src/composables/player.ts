@@ -52,12 +52,11 @@ export function usePlayer(handleCommentResult: ((res: GetCommentApiReturnType) =
       fileHash,
       fileSize: videoInfo.value.size,
     })
-    if (res.isMatched) {
+    if (res.isMatched)
       match.value = res.matches[0]
-    }
-    else {
+
+    else
       elNotify.error('匹配失败，请尝试手动匹配')
-    }
   }
 
   const userInputRes = (url: string) => {
@@ -87,15 +86,14 @@ export function usePlayer(handleCommentResult: ((res: GetCommentApiReturnType) =
       elNotify.error('弹幕匹配失败')
       userInputRes(getCommentUrl(episodeId, { withRelated: 'true' }))
     })
-    if (res && res.count) {
+    if (res && res.count)
       handleCommentResult && handleCommentResult(res)
-    }
-    else if (res && res.count === 0) {
+
+    else if (res && res.count === 0)
       elNotify.warning('没有匹配到任何弹幕，尝试重新匹配')
-    }
-    else {
+
+    else
       elNotify.error('弹幕匹配失败')
-    }
   }
 
   watch(md5, (val) => {
@@ -107,9 +105,8 @@ export function usePlayer(handleCommentResult: ((res: GetCommentApiReturnType) =
   watch(match, (val) => {
     if (val) {
       elNotify.info(`视频匹配成功：${val.animeTitle} - ${val.episodeTitle}`)
-      if (handleCommentResult) {
+      if (handleCommentResult)
         getComment(val.episodeId)
-      }
     }
   })
 }

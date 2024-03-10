@@ -35,7 +35,7 @@ const limitFormatter = (value: number) => value === 0 ? '无限' : value
     <el-slider v-model="commentLimit" :min="0" :max="200" :step="1" :format-tooltip="limitFormatter" :marks="limitMap" />
     <div>弹幕阴影</div>
     <el-radio-group v-model="commentShadow" size="small">
-      <el-radio-button v-for="(label, key) in textShadowLabelMap" :key="key" my2 :label="key">
+      <el-radio-button v-for="(label, key) in textShadowLabelMap" :key="key" my2 :value="key">
         {{ label }}
       </el-radio-button>
     </el-radio-group>
@@ -64,7 +64,7 @@ const limitFormatter = (value: number) => value === 0 ? '无限' : value
   .el-slider__button {
     background-color: var(--el-slider-main-bg-color);
   }
-  .el-slider__marks-text{
+  .el-slider__marks-text {
     word-break: keep-all;
     margin-top: 10px;
     font-size: 12px;
@@ -73,18 +73,18 @@ const limitFormatter = (value: number) => value === 0 ? '无限' : value
 
 :deep(.el-radio-button) {
   .el-radio-button__inner {
-    --el-text-color-regular: #CFD3DC;
+    --el-text-color-regular: #cfd3dc;
     --el-fill-color-blank: transparent;
   }
 }
 
 :deep(.el-input) {
-  --el-input-text-color: #CFD3DC;
+  --el-input-text-color: #cfd3dc;
   --el-input-bg-color: transparent;
 }
 
 :deep(.el-input-number) {
-  --el-text-color-regular: #CFD3DC;
+  --el-text-color-regular: #cfd3dc;
   --el-fill-color-light: transparent;
 }
 </style>

@@ -4,10 +4,10 @@ const emit = defineEmits(['manualMatch', 'manualMatchXml'])
 
 <template>
   <div w-full flex justify-center gap-2>
-    <div color-gray cursor-pointer @click="emit('manualMatch')">
+    <div cursor-pointer color-gray @click="emit('manualMatch')">
       手动匹配
     </div>
-    <div color-gray cursor-pointer @click="emit('manualMatchXml')">
+    <div cursor-pointer color-gray @click="emit('manualMatchXml')">
       手动匹配XML
     </div>
   </div>

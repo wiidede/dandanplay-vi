@@ -17,12 +17,15 @@ html {
 }
 
 body {
-  --transition-theme: color var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier),
-    background var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);
+  --transition-theme: color var(--el-transition-duration)
+      var(--el-transition-function-ease-in-out-bezier),
+    background var(--el-transition-duration)
+      var(--el-transition-function-ease-in-out-bezier);
 }
 
 body {
-  --comment-text-shadow: #000 1px 0 1px, #000 0 1px 1px, #000 0 -1px 1px, #000 -1px 0 1px;
+  --comment-text-shadow: #000 1px 0 1px, #000 0 1px 1px, #000 0 -1px 1px,
+    #000 -1px 0 1px;
   --comment-text-weight: normal;
 
   .nplayer_danmaku_item {
@@ -38,7 +41,9 @@ body {
 
 /* Fancy blur effect */
 #nprogress .peg {
-  box-shadow: 0 0 10px var(--el-color-primary), 0 0 5px var(--el-color-primary);
+  box-shadow:
+    0 0 10px var(--el-color-primary),
+    0 0 5px var(--el-color-primary);
 }
 
 #nprogress .spinner {

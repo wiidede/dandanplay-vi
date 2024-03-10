@@ -30,7 +30,7 @@ export function useNPlayerSettingsConst() {
     shadow: '阴影',
     none: '无',
   } as const
-  const textWeightList = new Array(9).fill(0).map((_, index) => {
+  const textWeightList = Array.from({ length: 9 }).fill(0).map((_, index) => {
     return `${index * 100 + 100}`
   })
 
@@ -49,13 +49,11 @@ export function useNPlayerSettings() {
     textShadowMap,
   } = useNPlayerSettingsConst()
   watchEffect(() => {
-    if (textShadow.value) {
+    if (textShadow.value)
       document.body.style.setProperty('--comment-text-shadow', textShadowMap[textShadow.value])
-    }
   })
   watchEffect(() => {
-    if (textWeight.value) {
+    if (textWeight.value)
       document.body.style.setProperty('--comment-text-weight', textWeight.value)
-    }
   })
 }

@@ -13,9 +13,8 @@ watchEffect(() => {
 })
 
 router.afterEach((to) => {
-  if (activeName.value !== to.path) {
+  if (activeName.value !== to.path)
     activeName.value = to.path
-  }
 })
 
 watch(() => activeName.value, (path) => {
@@ -24,17 +23,17 @@ watch(() => activeName.value, (path) => {
 </script>
 
 <template>
-  <header flex items-center gap4 p-x-4 select-none relative>
-    <div i-the-dandanplay-vi class="inline-block flex-shrink-0 primary" />
+  <header relative flex select-none items-center gap4 p-x-4>
+    <div i-the-dandanplay-vi class="primary inline-block flex-shrink-0" />
     <span class="header-title">DanDanPlay Vi</span>
     <el-tabs v-model="activeName" class="header-tabs flex-auto overflow-hidden">
       <el-tab-pane v-for="menu in menuList" :key="menu.name" :label="menu.label" :name="menu.path" />
     </el-tabs>
-    <button icon-btn ml-auto @click="toggleDark()">
+    <button ml-auto icon-btn @click="toggleDark()">
       <div dark:i-carbon-moon i-carbon-sun />
     </button>
     <a
-      icon-btn i-carbon-logo-github flex-shrink-0
+      i-carbon-logo-github flex-shrink-0 icon-btn
       rel="noreferrer"
       href="https://github.com/wiidede/DanDanPlayer-vitesse"
       target="_blank"
@@ -45,7 +44,7 @@ watch(() => activeName.value, (path) => {
 
 <style lang="scss" scoped>
 .primary {
-  color: var(--el-color-primary)
+  color: var(--el-color-primary);
 }
 
 header {
@@ -72,7 +71,6 @@ header {
         display: none;
       }
     }
-
   }
 }
 

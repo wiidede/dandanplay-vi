@@ -5,7 +5,7 @@ const router = useRouter()
 
 <template>
   <div>
-    <div i-carbon-pedestrian text-4xl inline-block />
+    <div i-carbon-pedestrian inline-block text-4xl />
     <p>
       Hi, {{ props.name }}
     </p>
@@ -15,7 +15,7 @@ const router = useRouter()
 
     <div>
       <button
-        class="btn m-3 text-sm mt-8"
+        class="m-3 mt-8 text-sm btn"
         @click="router.back()"
       >
         Back

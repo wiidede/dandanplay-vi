@@ -16,7 +16,7 @@ const {
   <div class="setting-item optional-item">
     <span>弹幕阴影</span>
     <el-radio-group v-model="textShadow">
-      <el-radio v-for="shadow in textShadowList" :key="shadow" :label="shadow" border>
+      <el-radio v-for="shadow in textShadowList" :key="shadow" :value="shadow" border>
         {{ textShadowLabelMap[shadow] }}
       </el-radio>
     </el-radio-group>
@@ -24,7 +24,7 @@ const {
   <div class="setting-item optional-item">
     <span>弹幕字重</span>
     <el-radio-group v-model="textWeight">
-      <el-radio v-for="weight in textWeightList" :key="weight" :label="weight" border />
+      <el-radio v-for="weight in textWeightList" :key="weight" :value="weight" border />
     </el-radio-group>
   </div>
 </template>

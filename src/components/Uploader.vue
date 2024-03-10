@@ -14,9 +14,8 @@ const handleExceed: UploadProps['onExceed'] = (files) => {
 
 const handleChange: UploadProps['onChange'] = (uploadFile) => {
   const video = uploadFile.raw
-  if (video) {
+  if (video)
     setVideo(video)
-  }
 }
 </script>
 

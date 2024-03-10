@@ -30,7 +30,7 @@ onDeactivated(() => {
 <style lang="scss" scoped>
 h1 {
   font-size: 1.2rem;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
   font-weight: 500;
 }
 

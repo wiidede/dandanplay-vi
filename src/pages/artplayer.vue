@@ -46,15 +46,14 @@ function handleResult(res: GetCommentApiReturnType) {
 usePlayer(handleResult)
 
 watch(video, (val) => {
-  if (val) {
+  if (val)
     player.switchUrl(val)
-  }
 })
 </script>
 
 <template>
   <player-layout>
-    <div ref="playerRef" w-full h-full />
+    <div ref="playerRef" h-full w-full />
   </player-layout>
   <ActionLayout @manual-match="manualMatchComment(handleResult)" />
 </template>
