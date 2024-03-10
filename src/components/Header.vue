@@ -24,29 +24,37 @@ watch(() => activeName.value, (path) => {
 
 <template>
   <header relative flex select-none items-center gap4 p-x-4>
-    <div i-the-dandanplay-vi class="primary inline-block flex-shrink-0" />
-    <span class="header-title">DanDanPlay Vi</span>
+    <router-link to="/" class="flex items-center gap4">
+      <div i-the-dandanplay-vi class="text-primary inline-block flex-shrink-0" />
+      <span class="header-title">DanDanPlay Vi</span>
+    </router-link>
     <el-tabs v-model="activeName" class="header-tabs flex-auto overflow-hidden">
       <el-tab-pane v-for="menu in menuList" :key="menu.name" :label="menu.label" :name="menu.path" />
     </el-tabs>
-    <button ml-auto icon-btn @click="toggleDark()">
+    <a href="https://www.dandanplay.com/" target="_blank" lt-sm:hidden>
+      <button class="flex items-center bg-transparent hover:filter-drop-shadow">
+        <div i-the-dandanplay-vi class="text-dandan inline-block flex-shrink-0" />
+        弹弹play官网
+      </button>
+    </a>
+    <button icon-btn @click="toggleDark()">
       <div dark:i-carbon-moon i-carbon-sun />
     </button>
     <a
-      i-carbon-logo-github flex-shrink-0 icon-btn
+      class="flex"
       rel="noreferrer"
       href="https://github.com/wiidede/DanDanPlayer-vitesse"
       target="_blank"
       title="GitHub"
-    />
+    >
+      <button class="icon-btn">
+        <div class="i-carbon-logo-github" />
+      </button>
+    </a>
   </header>
 </template>
 
 <style lang="scss" scoped>
-.primary {
-  color: var(--el-color-primary);
-}
-
 header {
   box-shadow: inset 0 -2px 0 0 var(--el-border-color-light);
   position: sticky;

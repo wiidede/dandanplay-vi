@@ -35,17 +35,17 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
       <UploadFilled />
     </el-icon>
     <div class="el-upload__text">
-      移动视频至此或<em>点击上传</em>
+      移动视频至此或<em>点击上传</em>即可开始匹配视频信息
     </div>
     <template #tip>
       <ol>
-        <li class="el-upload__tip flex items-center">
+        <li class="el-upload__tip">
           本网站只是通过
-          <el-link type="primary" href="https://api.dandanplay.net/swagger" target="_blank">
+          <el-link type="primary" href="https://api.dandanplay.net/swagger" target="_blank" class="!v-unset">
             弹弹play开放平台
           </el-link>
           ，完成弹幕播放器的最小实现，完整功能请访问
-          <el-link type="primary" href="https://www.dandanplay.com/" target="_blank">
+          <el-link type="primary" href="https://www.dandanplay.com/" target="_blank" class="!v-unset">
             弹弹play官网
           </el-link>
           下载软件。
