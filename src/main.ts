@@ -6,7 +6,7 @@ import 'nprogress/nprogress.css'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 
-import '@unocss/reset/tailwind.css'
+import '@unocss/reset/tailwind-compat.css'
 import './styles/main.scss'
 import 'uno.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'

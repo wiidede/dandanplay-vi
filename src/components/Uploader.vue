@@ -39,17 +39,25 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
     </div>
     <template #tip>
       <ol>
+        <li class="el-upload__tip flex items-center">
+          本网站只是通过
+          <el-link type="primary" href="https://api.dandanplay.net/swagger" target="_blank">
+            弹弹play开放平台
+          </el-link>
+          ，完成弹幕播放器的最小实现，完整功能请访问
+          <el-link type="primary" href="https://www.dandanplay.com/" target="_blank">
+            弹弹play官网
+          </el-link>
+          下载软件。
+        </li>
+        <li class="el-upload__tip">
+          上传本地视频后，即可开始播放、添加弹幕等
+        </li>
         <li class="el-upload__tip">
           本网站已经开源，并且是MIT协议，你可以随意查看、修改源码。
         </li>
         <li class="el-upload__tip">
           本网站所有接口均来自互联网，仅供学习交流使用，不得用于商业用途。
-        </li>
-        <li class="el-upload__tip">
-          本网站不会记录任何用户数据，包括但不限于用户上传的视频、用户的浏览记录、用户的 IP 地址等。
-        </li>
-        <li class="el-upload__tip">
-          本网站只是通过弹弹play的开放平台，完成弹幕播放器的最小实现，完整功能请访问官网下载软件。
         </li>
         <li class="el-upload__tip">
           目前只能上传一个视频，后续再次上传会覆盖之前的视频。
