@@ -1,9 +1,8 @@
-import type { GetCommentApiReturnType } from '~/typings/comment'
+import type { CommentResult, ICommentRaw } from '~/typings/comment'
+import type { Response } from '~/typings/common'
+import type { IMatch } from '~/typings/match'
 
-const getMatchInfoMemo = useAsyncMemoizeStorage(getMatchInfoApi, 'DanDan_MatchInfo')
-const getCommentMemo = useAsyncMemoizeStorage(getCommentApi, 'Comment')
-
-export async function manualMatchComment(handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) {
+export async function manualMatchComment(handleCommentResult: ((res: CommentResult) => void) | false) {
   const inputValue = await ElMessageBox.prompt('请输入第三方弹幕站（如A/B/C站）的网址url。', '手动匹配', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
@@ -11,11 +10,17 @@ export async function manualMatchComment(handleCommentResult: ((res: GetCommentA
     inputErrorMessage: '无效的网址',
   })
   const { value } = inputValue
-  const res = await getExternalCommentApi(value)
-  handleCommentResult && handleCommentResult(res)
+  const { data } = await useDanDanFetch<Response<{
+    count: number
+    comments: ICommentRaw[]
+  }>>(`/extcomment/?${new URLSearchParams({
+    url: value,
+  })}`).json()
+  if (data.value)
+    handleCommentResult && handleCommentResult(data.value)
 }
 
-export async function manualMatchCommentXML(handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) {
+export async function manualMatchCommentXML(handleCommentResult: ((res: CommentResult) => void) | false) {
   const inputValue = await ElMessageBox.prompt('请输入b站XML格式的字符串', '手动匹配', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
@@ -30,7 +35,7 @@ export async function manualMatchCommentXML(handleCommentResult: ((res: GetComme
     return
   }
   const nodeList = Array.from(doc.documentElement.childNodes).filter(node => node.nodeName === 'd')
-  const res: GetCommentApiReturnType = {
+  const res: CommentResult = {
     count: nodeList.length,
     comments: nodeList.map((node, index) => ({
       cid: index,
@@ -41,55 +46,50 @@ export async function manualMatchCommentXML(handleCommentResult: ((res: GetComme
   handleCommentResult && handleCommentResult(res)
 }
 
-export function usePlayer(handleCommentResult: ((res: GetCommentApiReturnType) => void) | false) {
+export function usePlayer(handleCommentResult: ((res: CommentResult) => void) | false) {
   const playerStore = usePlayerStore()
   const { videoInfo, match } = storeToRefs(playerStore)
   const md5 = computed(() => videoInfo.value.md5)
 
   const getMatchInfo = async (fileHash: string) => {
-    const res = await getMatchInfoMemo({
+    const params: {
+      fileName: string
+      fileHash: string
+      fileSize: number
+      videoDuration?: number
+      matchMode?: string
+    } = {
       fileName: videoInfo.value.name,
       fileHash,
       fileSize: videoInfo.value.size,
-    })
-    if (res.isMatched)
-      match.value = res.matches[0]
+    }
+    const { data } = await useDanDanFetch<Response<{
+      isMatched: boolean
+      matches: IMatch[]
+    }>>('/match').post(params).json()
+    if (data.value?.isMatched)
+      match.value = data.value.matches[0]
 
     else
       elNotify.error('匹配失败，请尝试手动匹配')
   }
 
-  const userInputRes = (url: string) => {
-    ElMessageBox.prompt(`<span>请手动将<a target="_blank" href="${url}">请求</a>结果复制到此</span>`, '提示', {
-      confirmButtonText: '确定',
-      cancelButtonText: '请求',
-      dangerouslyUseHTMLString: true,
-      customClass: 'input-popper',
-      inputType: 'textarea',
-      showClose: false,
-    }).then(({ value }) => {
-      try {
-        const res = JSON.parse(value)
-        handleCommentResult && handleCommentResult(res)
-      }
-      catch (error) {
-        userInputRes(url)
-        elNotify.error('解析失败')
-      }
-    }).catch(() => {
-      window.open(url, '_blank')
-      userInputRes(url)
-    })
-  }
   const getComment = async (episodeId: number) => {
-    const res = await getCommentMemo(episodeId, { withRelated: true }).catch(() => {
-      elNotify.error('弹幕匹配失败')
-      userInputRes(getCommentUrl(episodeId, { withRelated: 'true' }))
-    })
-    if (res && res.count)
-      handleCommentResult && handleCommentResult(res)
+    const params: {
+      from?: string
+      withRelated?: string
+      chConvert?: '0' | '1' | '2'
+    } = {
+      withRelated: 'true',
+    }
+    const { data } = await useDanDanFetch<Response<{
+      count: number
+      comments: ICommentRaw[]
+    }>>(`/comment/${episodeId}?${new URLSearchParams(params)}`).json()
+    if (data.value?.count)
+      handleCommentResult && handleCommentResult(data.value)
 
-    else if (res && res.count === 0)
+    else if (data.value?.count === 0)
       elNotify.warning('没有匹配到任何弹幕，尝试重新匹配')
 
     else
@@ -101,7 +101,10 @@ export function usePlayer(handleCommentResult: ((res: GetCommentApiReturnType) =
       elNotify.info(`Hash计算完成：${val}`)
       getMatchInfo(val)
     }
-  }, { immediate: true })
+  }, {
+    immediate: true,
+  })
+
   watch(match, (val) => {
     if (val) {
       elNotify.info(`视频匹配成功：${val.animeTitle} - ${val.episodeTitle}`)

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NPlayer from 'nplayer'
 import NPlayerComment from '@nplayer/danmaku'
-import type { GetCommentApiReturnType } from '~/typings/comment'
+import type { CommentResult } from '~/typings/comment'
 
 const playerStore = usePlayerStore()
 const { video, comments } = storeToRefs(playerStore)
@@ -23,7 +23,7 @@ onBeforeUnmount(() => {
   player.dispose()
 })
 
-function handleResult(res: GetCommentApiReturnType) {
+function handleResult(res: CommentResult) {
   if (res.count) {
     comments.value = res.comments.map(dandan2nPlayer).sort((a, b) => a.time - b.time)
     elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)

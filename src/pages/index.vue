@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Worker from '~/utils/dandanMd5.ts?worker'
+import Worker from '~/workers/dandanMd5.ts?worker'
 
 const worker = new Worker()
 const isWorker = ref(true)

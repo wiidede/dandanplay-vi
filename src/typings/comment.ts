@@ -1,4 +1,4 @@
-import type { ResponseCommon } from './common'
+import type { Response } from './common'
 
 export interface ICommentRaw {
   cid: number
@@ -31,15 +31,7 @@ export interface ICommentCCL {
   size: number
 }
 
-interface ICommentParams {
-  from?: number
-  withRelated?: boolean
-  chConvert?: 0 | 1 | 2
-}
-
-export type GetCommentApi = (episodeId: number, params?: ICommentParams) => Promise<ResponseCommon<{
+export type CommentResult = Response<{
   count: number
   comments: ICommentRaw[]
-}>>
-export type GetCommentApiReturnType = Awaited<ReturnType<GetCommentApi>>
-export type GetExternalCommentApi = (url: string) => ReturnType<GetCommentApi>
+}>

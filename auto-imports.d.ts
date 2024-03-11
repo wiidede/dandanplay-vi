@@ -19,7 +19,7 @@ declare global {
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const axios: typeof import('axios')['default']
-  const calcDandanMd5: typeof import('./src/utils/common/index')['calcDandanMd5']
+  const calcDandanMd5: typeof import('./src/utils/common')['calcDandanMd5']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
   const computedEager: typeof import('@vueuse/core')['computedEager']
@@ -38,9 +38,9 @@ declare global {
   const createTemplatePromise: typeof import('@vueuse/core')['createTemplatePromise']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
   const customRef: typeof import('vue')['customRef']
-  const dandan2CCL: typeof import('./src/utils/common/index')['dandan2CCL']
-  const dandan2artPlayer: typeof import('./src/utils/common/index')['dandan2artPlayer']
-  const dandan2nPlayer: typeof import('./src/utils/common/index')['dandan2nPlayer']
+  const dandan2CCL: typeof import('./src/utils/common')['dandan2CCL']
+  const dandan2artPlayer: typeof import('./src/utils/common')['dandan2artPlayer']
+  const dandan2nPlayer: typeof import('./src/utils/common')['dandan2nPlayer']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
@@ -48,15 +48,11 @@ declare global {
   const defineStore: typeof import('pinia')['defineStore']
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
   const effectScope: typeof import('vue')['effectScope']
-  const elNotify: typeof import('./src/utils/common/el')['elNotify']
+  const elNotify: typeof import('./src/utils/el')['elNotify']
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const getActivePinia: typeof import('pinia')['getActivePinia']
-  const getCommentApi: typeof import('./src/services/comment')['getCommentApi']
-  const getCommentUrl: typeof import('./src/services/comment')['getCommentUrl']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
-  const getExternalCommentApi: typeof import('./src/services/comment')['getExternalCommentApi']
-  const getMatchInfoApi: typeof import('./src/services/match')['getMatchInfoApi']
   const h: typeof import('vue')['h']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
@@ -156,7 +152,6 @@ declare global {
   const useArrayReduce: typeof import('@vueuse/core')['useArrayReduce']
   const useArraySome: typeof import('@vueuse/core')['useArraySome']
   const useArrayUnique: typeof import('@vueuse/core')['useArrayUnique']
-  const useAsyncMemoizeStorage: typeof import('./src/utils/common/index')['useAsyncMemoizeStorage']
   const useAsyncQueue: typeof import('@vueuse/core')['useAsyncQueue']
   const useAsyncState: typeof import('@vueuse/core')['useAsyncState']
   const useAttrs: typeof import('vue')['useAttrs']
@@ -178,6 +173,7 @@ declare global {
   const useCssVars: typeof import('vue')['useCssVars']
   const useCurrentElement: typeof import('@vueuse/core')['useCurrentElement']
   const useCycleList: typeof import('@vueuse/core')['useCycleList']
+  const useDanDanFetch: typeof import('./src/utils/fetch')['useDanDanFetch']
   const useDark: typeof import('@vueuse/core')['useDark']
   const useDateFormat: typeof import('@vueuse/core')['useDateFormat']
   const useDePlayerSettings: typeof import('./src/composables/dePlayer')['useDePlayerSettings']
@@ -354,8 +350,7 @@ declare module 'vue' {
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
-    readonly axios: UnwrapRef<typeof import('axios')['default']>
-    readonly calcDandanMd5: UnwrapRef<typeof import('./src/utils/common/index')['calcDandanMd5']>
+    readonly calcDandanMd5: UnwrapRef<typeof import('./src/utils/common')['calcDandanMd5']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
     readonly computedEager: UnwrapRef<typeof import('@vueuse/core')['computedEager']>
@@ -374,9 +369,9 @@ declare module 'vue' {
     readonly createTemplatePromise: UnwrapRef<typeof import('@vueuse/core')['createTemplatePromise']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
-    readonly dandan2CCL: UnwrapRef<typeof import('./src/utils/common/index')['dandan2CCL']>
-    readonly dandan2artPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2artPlayer']>
-    readonly dandan2nPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2nPlayer']>
+    readonly dandan2CCL: UnwrapRef<typeof import('./src/utils/common')['dandan2CCL']>
+    readonly dandan2artPlayer: UnwrapRef<typeof import('./src/utils/common')['dandan2artPlayer']>
+    readonly dandan2nPlayer: UnwrapRef<typeof import('./src/utils/common')['dandan2nPlayer']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -384,15 +379,11 @@ declare module 'vue' {
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly elNotify: UnwrapRef<typeof import('./src/utils/common/el')['elNotify']>
+    readonly elNotify: UnwrapRef<typeof import('./src/utils/el')['elNotify']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
-    readonly getCommentApi: UnwrapRef<typeof import('./src/services/comment')['getCommentApi']>
-    readonly getCommentUrl: UnwrapRef<typeof import('./src/services/comment')['getCommentUrl']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
-    readonly getExternalCommentApi: UnwrapRef<typeof import('./src/services/comment')['getExternalCommentApi']>
-    readonly getMatchInfoApi: UnwrapRef<typeof import('./src/services/match')['getMatchInfoApi']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -492,7 +483,6 @@ declare module 'vue' {
     readonly useArrayReduce: UnwrapRef<typeof import('@vueuse/core')['useArrayReduce']>
     readonly useArraySome: UnwrapRef<typeof import('@vueuse/core')['useArraySome']>
     readonly useArrayUnique: UnwrapRef<typeof import('@vueuse/core')['useArrayUnique']>
-    readonly useAsyncMemoizeStorage: UnwrapRef<typeof import('./src/utils/common/index')['useAsyncMemoizeStorage']>
     readonly useAsyncQueue: UnwrapRef<typeof import('@vueuse/core')['useAsyncQueue']>
     readonly useAsyncState: UnwrapRef<typeof import('@vueuse/core')['useAsyncState']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
@@ -514,6 +504,7 @@ declare module 'vue' {
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useCurrentElement: UnwrapRef<typeof import('@vueuse/core')['useCurrentElement']>
     readonly useCycleList: UnwrapRef<typeof import('@vueuse/core')['useCycleList']>
+    readonly useDanDanFetch: UnwrapRef<typeof import('./src/utils/fetch')['useDanDanFetch']>
     readonly useDark: UnwrapRef<typeof import('@vueuse/core')['useDark']>
     readonly useDateFormat: UnwrapRef<typeof import('@vueuse/core')['useDateFormat']>
     readonly useDePlayerSettings: UnwrapRef<typeof import('./src/composables/dePlayer')['useDePlayerSettings']>
@@ -683,8 +674,7 @@ declare module '@vue/runtime-core' {
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
-    readonly axios: UnwrapRef<typeof import('axios')['default']>
-    readonly calcDandanMd5: UnwrapRef<typeof import('./src/utils/common/index')['calcDandanMd5']>
+    readonly calcDandanMd5: UnwrapRef<typeof import('./src/utils/common')['calcDandanMd5']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
     readonly computedEager: UnwrapRef<typeof import('@vueuse/core')['computedEager']>
@@ -703,9 +693,9 @@ declare module '@vue/runtime-core' {
     readonly createTemplatePromise: UnwrapRef<typeof import('@vueuse/core')['createTemplatePromise']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
-    readonly dandan2CCL: UnwrapRef<typeof import('./src/utils/common/index')['dandan2CCL']>
-    readonly dandan2artPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2artPlayer']>
-    readonly dandan2nPlayer: UnwrapRef<typeof import('./src/utils/common/index')['dandan2nPlayer']>
+    readonly dandan2CCL: UnwrapRef<typeof import('./src/utils/common')['dandan2CCL']>
+    readonly dandan2artPlayer: UnwrapRef<typeof import('./src/utils/common')['dandan2artPlayer']>
+    readonly dandan2nPlayer: UnwrapRef<typeof import('./src/utils/common')['dandan2nPlayer']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -713,15 +703,11 @@ declare module '@vue/runtime-core' {
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly elNotify: UnwrapRef<typeof import('./src/utils/common/el')['elNotify']>
+    readonly elNotify: UnwrapRef<typeof import('./src/utils/el')['elNotify']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
-    readonly getCommentApi: UnwrapRef<typeof import('./src/services/comment')['getCommentApi']>
-    readonly getCommentUrl: UnwrapRef<typeof import('./src/services/comment')['getCommentUrl']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
-    readonly getExternalCommentApi: UnwrapRef<typeof import('./src/services/comment')['getExternalCommentApi']>
-    readonly getMatchInfoApi: UnwrapRef<typeof import('./src/services/match')['getMatchInfoApi']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -821,7 +807,6 @@ declare module '@vue/runtime-core' {
     readonly useArrayReduce: UnwrapRef<typeof import('@vueuse/core')['useArrayReduce']>
     readonly useArraySome: UnwrapRef<typeof import('@vueuse/core')['useArraySome']>
     readonly useArrayUnique: UnwrapRef<typeof import('@vueuse/core')['useArrayUnique']>
-    readonly useAsyncMemoizeStorage: UnwrapRef<typeof import('./src/utils/common/index')['useAsyncMemoizeStorage']>
     readonly useAsyncQueue: UnwrapRef<typeof import('@vueuse/core')['useAsyncQueue']>
     readonly useAsyncState: UnwrapRef<typeof import('@vueuse/core')['useAsyncState']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
@@ -843,6 +828,7 @@ declare module '@vue/runtime-core' {
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useCurrentElement: UnwrapRef<typeof import('@vueuse/core')['useCurrentElement']>
     readonly useCycleList: UnwrapRef<typeof import('@vueuse/core')['useCycleList']>
+    readonly useDanDanFetch: UnwrapRef<typeof import('./src/utils/fetch')['useDanDanFetch']>
     readonly useDark: UnwrapRef<typeof import('@vueuse/core')['useDark']>
     readonly useDateFormat: UnwrapRef<typeof import('@vueuse/core')['useDateFormat']>
     readonly useDePlayerSettings: UnwrapRef<typeof import('./src/composables/dePlayer')['useDePlayerSettings']>

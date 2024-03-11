@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DePlayer from '~/components/DePlayer.vue'
-import type { GetCommentApiReturnType, ICommentCCL } from '~/typings/comment'
+import type { CommentResult, ICommentCCL } from '~/typings/comment'
 
 const playerStore = usePlayerStore()
 const { video, comments } = storeToRefs(playerStore)
@@ -8,7 +8,7 @@ const commentsCCL = computed<ICommentCCL[]>(() => comments.value as ICommentCCL[
 
 const playerRef = ref<InstanceType<typeof DePlayer>>()
 
-function handleResult(res: GetCommentApiReturnType) {
+function handleResult(res: CommentResult) {
   if (res.count) {
     comments.value = res.comments.map(dandan2CCL)
     elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)

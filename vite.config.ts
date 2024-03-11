@@ -33,7 +33,6 @@ export default defineConfig({
         '@vueuse/core',
         'pinia',
         {
-          axios: [['default', 'axios']], // import { default as axios } from 'axios',
           tinycolor2: [['default', 'tinycolor']],
         },
       ],
@@ -42,7 +41,7 @@ export default defineConfig({
         './src/composables',
         './src/store',
         './src/services',
-        './src/utils/common',
+        './src/utils',
       ],
       vueTemplate: true,
       resolvers: [ElementPlusResolver()],

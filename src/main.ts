@@ -11,8 +11,6 @@ import './styles/main.scss'
 import 'uno.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
-import './utils/global'
-
 const app = createApp(App)
 
 // router

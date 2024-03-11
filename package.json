@@ -18,7 +18,6 @@
     "@vueuse/core": "^10.9.0",
     "artplayer": "^5.1.1",
     "artplayer-plugin-danmuku": "^5.0.1",
-    "axios": "^1.6.7",
     "element-plus": "^2.6.1",
     "nplayer": "^1.0.15",
     "nprogress": "^0.2.0",
