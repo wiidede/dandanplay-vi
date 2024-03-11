@@ -25,7 +25,7 @@ watch(() => activeName.value, (path) => {
 <template>
   <header relative flex select-none items-center gap4 p-x-4>
     <router-link to="/" class="flex items-center gap4">
-      <div i-the-dandanplay-vi class="text-primary inline-block flex-shrink-0" />
+      <div i-the-dandanplay-vi class="inline-block flex-shrink-0 text-primary" />
       <span class="header-title">DanDanPlay Vi</span>
     </router-link>
     <el-tabs v-model="activeName" class="header-tabs flex-auto overflow-hidden">
@@ -33,17 +33,17 @@ watch(() => activeName.value, (path) => {
     </el-tabs>
     <a href="https://www.dandanplay.com/" target="_blank" lt-sm:hidden>
       <button class="flex items-center bg-transparent hover:filter-drop-shadow">
-        <div i-the-dandanplay-vi class="text-dandan inline-block flex-shrink-0" />
+        <div i-the-dandanplay-vi class="inline-block flex-shrink-0 text-dandan" />
         弹弹play官网
       </button>
     </a>
     <button icon-btn @click="toggleDark()">
-      <div dark:i-carbon-moon i-carbon-sun />
+      <div i-carbon-sun dark:i-carbon-moon />
     </button>
     <a
       class="flex"
       rel="noreferrer"
-      href="https://github.com/wiidede/DanDanPlayer-vitesse"
+      href="https://github.com/wiidede/dandanplay-vi"
       target="_blank"
       title="GitHub"
     >

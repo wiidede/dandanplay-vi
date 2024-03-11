@@ -2,16 +2,16 @@
 const playerStore = usePlayerStore()
 const { video, videoInfo, match } = storeToRefs(playerStore)
 
-const title = useTitle('DanDanPlayer Vitesse')
+const title = useTitle('弹弹play web版')
 
 onActivated(() => {
   watchEffect(() => {
-    title.value = match.value ? `${match.value.episodeTitle} - ${match.value?.animeTitle} - DanDanPlayer Vitesse` : 'DanDanPlayer Vitesse'
+    title.value = match.value ? `${match.value.episodeTitle} - ${match.value?.animeTitle} - 弹弹play web版` : '弹弹play web版'
   })
 })
 
 onDeactivated(() => {
-  title.value = 'DanDanPlayer Vitesse'
+  title.value = '弹弹play web版'
 })
 </script>
 

@@ -31,6 +31,6 @@ dandanplay web简易实现
 
 ## 致谢
 
-- [DanDanPlayer](https://www.dandanplay.com/)
+- [弹弹play](https://www.dandanplay.com/)
 - [vitesse-lite](https://github.com/antfu/vitesse-lite)
 - [NPlayer](https://github.com/oyuyue/nplayer)

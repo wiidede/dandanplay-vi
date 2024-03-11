@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     ActionLayout: typeof import('./src/components/ActionLayout.vue')['default']
     CommentStyle: typeof import('./src/components/settings/commentStyle.vue')['default']
-    Counter: typeof import('./src/components/Counter.vue')['default']
     DePlayer: typeof import('./src/components/DePlayer.vue')['default']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
@@ -25,7 +24,6 @@ declare module 'vue' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElUpload: typeof import('element-plus/es')['ElUpload']
-    Footer: typeof import('./src/components/Footer.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     NPlayerSettings: typeof import('./src/components/settings/nPlayerSettings.vue')['default']
     PlayerLayout: typeof import('./src/components/PlayerLayout.vue')['default']
