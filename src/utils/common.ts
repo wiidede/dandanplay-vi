@@ -17,7 +17,6 @@ export function dandan2nPlayer(danComment: ICommentRaw) {
   return nComment
 }
 
-
 const dan2artTypeMap = {
   1: 0,
   4: 1,
