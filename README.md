@@ -1,6 +1,6 @@
 # dandanplay vi
 
-dandanplay web简易实现
+弹弹play web简易实现
 
 ## [Site](https://dandanplay-vitesse.netlify.app/)
 
