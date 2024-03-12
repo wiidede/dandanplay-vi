@@ -3,7 +3,7 @@
 import { createFetch, hasOwn } from '@vueuse/core'
 
 export const useDanDanFetch = createFetch({
-  baseUrl: 'https://api.dandanplay.net/api/v2',
+  baseUrl: 'https://dandan-proxy.wiidede.space/api/v2',
   options: {
     // async beforeFetch({ options }) {
     //   const myToken = await getMyToken()
