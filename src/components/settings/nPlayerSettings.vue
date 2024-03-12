@@ -24,7 +24,9 @@ const {
   <div class="setting-item optional-item">
     <span>弹幕字重</span>
     <el-radio-group v-model="textWeight">
-      <el-radio v-for="weight in textWeightList" :key="weight" :value="weight" border />
+      <el-radio v-for="weight in textWeightList" :key="weight" :value="weight" border>
+        {{ weight }}
+      </el-radio>
     </el-radio-group>
   </div>
 </template>
