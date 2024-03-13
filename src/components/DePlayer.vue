@@ -1,105 +1,27 @@
 <script setup lang="ts">
 import { usePopperContainerId } from 'element-plus'
 import { omit } from 'lodash-es'
-import '@/CCL.css'
-import { CommentManager } from '@/CCL'
 import type { ICommentCCL } from '~/typings/comment'
 
 const props = defineProps<{
   comments?: ICommentCCL[]
 }>()
-const emit = defineEmits(['play', 'pause'])
-
-const store = useDePlayerStore()
-const { toggleShowComment } = store
-const { commentHeight, commentSpeed, showComment, commentOffset, commentLimit } = storeToRefs(store)
 
 const videoContainerRef = ref<HTMLDivElement>()
 const videoRef = ref<HTMLVideoElement>()
 const commentRef = ref<HTMLDivElement>()
 
-let commentManager: InstanceType<typeof CommentManager>
-
+const { playing, currentTime } = useMediaControls(videoRef)
+const togglePlay = useToggle(playing)
 const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(videoContainerRef)
-const { idle } = useIdle(2.5 * 1000)
-const { pause: pauseTimer, resume: resumeTimer } = useRafFn(() => {
-  if (!commentManager || !videoRef.value)
-    return
-  commentManager.time(Math.round((videoRef.value.currentTime + (commentOffset.value || 0)) * 1000))
-}, {
-  immediate: false,
-})
+const { idle: systemIdle } = useIdle(3_000)
+const idle = computed(() => systemIdle.value && playing.value)
 
-// play
-const playing = ref(false)
-function play() {
-  videoRef.value?.play()
-}
-function pause() {
-  videoRef.value?.pause()
-}
-function togglePlay() {
-  playing.value ? pause() : play()
-}
-
-// comment
-watch(() => props.comments, (val) => {
-  if (val && val.length) {
-    commentManager.clear()
-    commentManager.load(val)
-    play()
-  }
-})
-function startComment() {
-  if (showComment.value) {
-    commentManager.start()
-    resumeTimer()
-  }
-}
-function stopComment(clear = false) {
-  commentManager.stop()
-  clear && commentManager.clear()
-  pauseTimer()
-}
+const comments = computed(() => props.comments)
+const { showComment, toggleShowComment } = useCCL(commentRef, comments, playing, currentTime)
 
 onMounted(() => {
-  videoRef.value?.addEventListener('play', () => {
-    playing.value = true
-    startComment()
-    emit('play')
-  })
-  videoRef.value?.addEventListener('pause', () => {
-    playing.value = false
-    stopComment()
-    emit('pause')
-  })
-
-  commentManager = new CommentManager(commentRef.value)
-  commentManager.init()
-
-  const width = ref(0)
-  const height = ref(0)
-  useResizeObserver(commentRef.value, (entries) => {
-    const entry = entries[0]
-    width.value = entry.contentRect.width
-    height.value = entry.contentRect.height
-  })
-  watchEffect(() => {
-    commentManager.setBounds(width.value, height.value * commentHeight.value / 100)
-  })
-
-  watch(commentSpeed, (val) => {
-    commentManager.options.scroll.scale = 1 / val
-  }, { immediate: true })
-
-  watch(commentLimit, (val) => {
-    commentManager.options.limit = val
-  }, { immediate: true })
-
-  watch(showComment, (val) => {
-    val ? startComment() : stopComment(true)
-  }, { immediate: true })
-
+  // fix tooltip not display while fullscreen
   watch(isFullscreen, (val) => {
     const popperContainer = document.querySelector(usePopperContainerId().selector.value)
     if (!popperContainer)
@@ -113,8 +35,7 @@ onMounted(() => {
 })
 
 defineExpose({
-  play,
-  pause,
+  playing,
   togglePlay,
 })
 </script>
@@ -162,7 +83,7 @@ defineExpose({
         </template>
         <CommentStyle />
       </el-popover>
-      <div i-carbon-closed-caption />
+      <!-- <div i-carbon-closed-caption /> -->
       <!-- <div i-carbon-shrink-screen cursor-pointer />
       <div i-carbon-popup cursor-pointer /> -->
       <div i-carbon-fit-to-screen cursor-pointer @click="toggleFullscreen()" />

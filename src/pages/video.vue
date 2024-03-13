@@ -6,8 +6,6 @@ const playerStore = usePlayerStore()
 const { video, comments } = storeToRefs(playerStore)
 const commentsCCL = computed<ICommentCCL[]>(() => comments.value as ICommentCCL[])
 
-const playerRef = ref<InstanceType<typeof DePlayer>>()
-
 function handleResult(res: CommentResult) {
   if (res.count) {
     comments.value = res.comments.map(dandan2CCL)
@@ -20,7 +18,7 @@ usePlayer(handleResult)
 
 <template>
   <player-layout>
-    <DePlayer ref="playerRef" :src="video" controls :comments="commentsCCL" />
+    <DePlayer :src="video" controls :comments="commentsCCL" />
   </player-layout>
   <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
 </template>
