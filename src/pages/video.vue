@@ -23,6 +23,6 @@ usePlayer(handleResult)
   <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

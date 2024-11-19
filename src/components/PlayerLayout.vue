@@ -27,7 +27,7 @@ onDeactivated(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 h1 {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;

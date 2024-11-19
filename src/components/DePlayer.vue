@@ -91,7 +91,7 @@ defineExpose({
   </div>
 </template>
 
-<style lang="scss">
+<style>
 .el-popover.comment-style-popper {
   font-size: 12px;
   background-color: #000000;
@@ -103,6 +103,6 @@ defineExpose({
 }
 </style>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

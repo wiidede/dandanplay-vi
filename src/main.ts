@@ -7,7 +7,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 
 import '@unocss/reset/tailwind-compat.css'
-import './styles/main.scss'
+import './styles/main.css'
 import 'uno.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 

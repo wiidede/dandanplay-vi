@@ -50,7 +50,7 @@ watch(video, (val) => {
   <ActionLayout @manual-match="manualMatchComment(handleResult)" />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .disabled {
   pointer-events: none;
 }

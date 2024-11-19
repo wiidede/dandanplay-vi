@@ -54,7 +54,7 @@ watch(() => activeName.value, (path) => {
   </header>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 header {
   box-shadow: inset 0 -2px 0 0 var(--el-border-color-light);
   position: sticky;
@@ -66,20 +66,16 @@ header {
   background: var(--bg-blur-effect-color);
 }
 
-:deep(.header-tabs) {
-  .el-tabs {
-    &__header {
-      margin-bottom: 0;
-    }
+:deep(.header-tabs) .el-tabs__header {
+  margin-bottom: 0;
+}
 
-    &__nav-wrap {
-      margin-bottom: 0;
+:deep(.header-tabs) .el-tabs__nav-wrap {
+  margin-bottom: 0;
+}
 
-      & ::after {
-        display: none;
-      }
-    }
-  }
+:deep(.header-tabs) .el-tabs__nav-wrap::after {
+  display: none;
 }
 
 @media screen and (max-width: 768px) {

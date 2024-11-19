@@ -44,7 +44,7 @@ const limitFormatter = (value: number) => value === 0 ? '无限' : value
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .config-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -52,30 +52,26 @@ const limitFormatter = (value: number) => value === 0 ? '无限' : value
   grid-gap: 10px 20px;
   width: max-content;
 }
+
 :deep(.el-slider) {
-  --el-slider-height: 4px;
-  --el-slider-button-size: 12px;
-  --el-slider-stop-bg-color: #808080;
-
-  .el-slider__runway {
-    background-color: #414243;
-  }
-
-  .el-slider__button {
-    background-color: var(--el-slider-main-bg-color);
-  }
-  .el-slider__marks-text {
-    word-break: keep-all;
-    margin-top: 10px;
-    font-size: 12px;
-  }
+	 --el-slider-height: 4px;
+	 --el-slider-button-size: 12px;
+	 --el-slider-stop-bg-color: #808080;
 }
-
-:deep(.el-radio-button) {
-  .el-radio-button__inner {
-    --el-text-color-regular: #cfd3dc;
-    --el-fill-color-blank: transparent;
-  }
+ :deep(.el-slider) .el-slider__runway {
+	 background-color: #414243;
+}
+ :deep(.el-slider) .el-slider__button {
+	 background-color: var(--el-slider-main-bg-color);
+}
+ :deep(.el-slider) .el-slider__marks-text {
+	 word-break: keep-all;
+	 margin-top: 10px;
+	 font-size: 12px;
+}
+ :deep(.el-radio-button) .el-radio-button__inner {
+	 --el-text-color-regular: #cfd3dc;
+	 --el-fill-color-blank: transparent;
 }
 
 :deep(.el-input) {
