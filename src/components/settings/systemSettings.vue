@@ -31,7 +31,7 @@ watch(player, (val) => {
     <span>播放器</span>
     <el-radio-group v-model="player">
       <el-radio v-for="p in playerList" :key="p" :value="p" border>
-        {{ p === '/video' ? `${p.slice(1)}(α)` : p.slice(1) }}
+        {{ p === '/video' ? 'dan-player' : p.slice(1) }}
       </el-radio>
     </el-radio-group>
   </div>

@@ -1,13 +1,15 @@
 /// <reference types="vitest" />
 
 import path from 'node:path'
-import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
-import Components from 'unplugin-vue-components/vite'
+import { DanPlayerResolver } from '@wiidede/dan-player/resolver'
+import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import Unocss from 'unocss/vite'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
+import Pages from 'vite-plugin-pages'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 // import 'comment-core-library/dist/CommentCoreLibrary'
 
@@ -50,12 +52,17 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-components
     Components({
       dts: true,
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        DanPlayerResolver(),
+      ],
     }),
 
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
     Unocss(),
+
+    vueDevTools(),
   ],
 
   // https://github.com/vitest-dev/vitest

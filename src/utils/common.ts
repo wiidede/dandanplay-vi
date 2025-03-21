@@ -1,5 +1,5 @@
-import SparkMD5 from 'spark-md5'
 import type { ICommentArt, ICommentCCL, ICommentN, ICommentRaw } from '~/typings/comment'
+import SparkMD5 from 'spark-md5'
 
 const dan2nTypeMap = {
   1: 'scroll',

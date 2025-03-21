@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { CommentResult } from '~/typings/comment'
 import ArtPlayer from 'artplayer'
 import ArtPlayerComment from 'artplayer-plugin-danmuku'
-import type { CommentResult } from '~/typings/comment'
 
 const playerStore = usePlayerStore()
 const { video, comments } = storeToRefs(playerStore)

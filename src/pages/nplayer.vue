@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import NPlayer from 'nplayer'
-import NPlayerComment from '@nplayer/danmaku'
 import type { CommentResult } from '~/typings/comment'
+import NPlayerComment from '@nplayer/danmaku'
+import NPlayer from 'nplayer'
 
 const playerStore = usePlayerStore()
 const { video, comments } = storeToRefs(playerStore)

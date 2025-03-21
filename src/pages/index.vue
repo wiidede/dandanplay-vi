@@ -2,7 +2,6 @@
 import Worker from '~/workers/dandanMd5.ts?worker'
 
 const worker = new Worker()
-const isWorker = ref(true)
 const router = useRouter()
 const settingsStore = useSettingsStore()
 const { player } = storeToRefs(settingsStore)
@@ -18,7 +17,6 @@ watch(video, (val) => {
       if (!videoInfo.value.md5) {
         elNotify.warning('md5后台计算3s没有响应，开始在主线程计算')
         worker.terminate()
-        isWorker.value = false
         videoInfo.value.md5 = await calcDandanMd5(videoInfo.value.raw!)
       }
     }, 3000)

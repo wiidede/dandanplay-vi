@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UploadFilled } from '@element-plus/icons-vue'
 import type { UploadInstance, UploadProps, UploadRawFile } from 'element-plus'
+import { UploadFilled } from '@element-plus/icons-vue'
 
 const { setVideo } = usePlayerStore()
 
@@ -24,7 +24,7 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
     ref="uploadRef"
     drag
     action="#"
-    accept="video/*"
+    accept="video/*,.mkv,video/x-matroska"
     :show-file-list="false"
     :limit="1"
     :on-exceed="handleExceed"
@@ -54,10 +54,24 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
           上传本地视频后，即可开始播放、添加弹幕等
         </li>
         <li class="el-upload__tip">
+          本网站已于2025年3月21日更新至
+          <el-link href="https://github.com/wiidede/dan-player" target="_blank" class="!v-unset">
+            @wiidede/dan-player
+          </el-link>
+          这个播放器是我个人创建的，支持解析mkv字幕，使用CCL作为弹幕播放，如有任何问题，请提交
+          <el-link href="https://github.com/wiidede/dan-player/issues" target="_blank" class="!v-unset">
+            issues
+          </el-link>
+          或者切换播放器，或者访问
+          <el-link href="https://8c0a2c16.dandanplay.pages.dev" target="_blank" class="!v-unset">
+            历史版本
+          </el-link>
+        </li>
+        <li class="el-upload__tip">
           本网站已经开源，并且是MIT协议，你可以随意查看、修改源码。
         </li>
         <li class="el-upload__tip">
-          本网站所有接口均来自互联网，仅供学习交流使用，不得用于商业用途。
+          本网站所有接口仅供学习交流使用，不得用于商业用途。
         </li>
         <li class="el-upload__tip">
           目前只能上传一个视频，后续再次上传会覆盖之前的视频。

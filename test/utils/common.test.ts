@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ICommentArt, ICommentCCL, ICommentN, ICommentRaw } from '~/typings/comment'
+import { describe, expect, it } from 'vitest'
 
 // Unit tests for dandan2nPlayer
 describe('dandan2nPlayer', () => {

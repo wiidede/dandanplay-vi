@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import DePlayer from '~/components/DePlayer.vue'
 import type { CommentResult, ICommentCCL } from '~/typings/comment'
 
 const playerStore = usePlayerStore()
-const { video, comments } = storeToRefs(playerStore)
+const { videoInfo, comments } = storeToRefs(playerStore)
 const commentsCCL = computed<ICommentCCL[]>(() => comments.value as ICommentCCL[])
 
 function handleResult(res: CommentResult) {
@@ -18,7 +17,7 @@ usePlayer(handleResult)
 
 <template>
   <player-layout>
-    <DePlayer :src="video" controls :comments="commentsCCL" />
+    <dan-player :src="videoInfo.raw" :comments="commentsCCL" autoplay-on-comment-load />
   </player-layout>
   <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
 </template>
