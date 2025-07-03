@@ -29,10 +29,14 @@ onDeactivated(() => {
       @click="router.push('/')"
     />
     <template v-if="match">
-      <h1>{{ match.animeTitle }} - {{ match.episodeTitle }}</h1>
+      <h1 class="self-start">
+        {{ match.animeTitle }} - {{ match.episodeTitle }}
+      </h1>
     </template>
     <template v-else-if="videoInfo.name">
-      <h1>{{ videoInfo.name }}</h1>
+      <h1 class="self-start">
+        {{ videoInfo.name }}
+      </h1>
     </template>
     <div :class="{ disabled: !video }" class="w-full">
       <slot />
@@ -44,7 +48,6 @@ onDeactivated(() => {
 <style scoped>
 h1 {
   font-size: 1.2rem;
-  margin-bottom: 0.8rem;
   font-weight: 500;
 }
 
