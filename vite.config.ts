@@ -9,7 +9,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
-import vueDevTools from 'vite-plugin-vue-devtools'
+// import vueDevTools from 'vite-plugin-vue-devtools'
 
 // import 'comment-core-library/dist/CommentCoreLibrary'
 
@@ -62,10 +62,11 @@ export default defineConfig({
     // see unocss.config.ts for config
     Unocss(),
 
-    vueDevTools(),
+    // vueDevTools(),
   ],
 
   // https://github.com/vitest-dev/vitest
+  // @ts-expect-error test not typed
   test: {
     environment: 'jsdom',
   },

@@ -5,13 +5,14 @@
     "lib": ["DOM", "ESNext"],
     "baseUrl": ".",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "paths": {
       "~/*": ["src/*"],
       "@/*": ["libs/*"]
     },
     "resolveJsonModule": true,
     "types": [
+      "vitest",
       "vite/client",
       "vite-plugin-pages/client"
     ],
