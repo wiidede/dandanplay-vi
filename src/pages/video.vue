@@ -18,8 +18,10 @@ usePlayer(handleResult)
 <template>
   <player-layout>
     <dan-player :src="videoInfo.raw" :comments="commentsCCL" autoplay-on-comment-load />
+    <template #action>
+      <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
+    </template>
   </player-layout>
-  <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
 </template>
 
 <style scoped>

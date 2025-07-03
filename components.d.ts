@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     ActionLayout: typeof import('./src/components/ActionLayout.vue')['default']
     DanPlayer: typeof import('@wiidede/dan-player')['DanPlayer']
+    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']

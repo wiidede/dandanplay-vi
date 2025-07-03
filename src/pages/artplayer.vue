@@ -54,8 +54,10 @@ watch(video, (val) => {
 <template>
   <player-layout>
     <div ref="playerRef" h-full w-full />
+    <template #action>
+      <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
+    </template>
   </player-layout>
-  <ActionLayout @manual-match="manualMatchComment(handleResult)" />
 </template>
 
 <style scoped>

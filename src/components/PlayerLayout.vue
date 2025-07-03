@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const router = useRouter()
+
 const playerStore = usePlayerStore()
 const { video, videoInfo, match } = storeToRefs(playerStore)
 
@@ -16,14 +18,26 @@ onDeactivated(() => {
 </script>
 
 <template>
-  <div mx-auto w-80vw class="player-container" :class="{ disabled: !video }">
+  <div class="container mx-auto mb-4 flex flex-col items-center gap-4">
+    <el-alert
+      v-if="!video"
+      title="前往首页上传本地视频"
+      type="info"
+      show-icon
+      :closable="false"
+      class="cursor-pointer"
+      @click="router.push('/')"
+    />
     <template v-if="match">
       <h1>{{ match.animeTitle }} - {{ match.episodeTitle }}</h1>
     </template>
     <template v-else-if="videoInfo.name">
       <h1>{{ videoInfo.name }}</h1>
     </template>
-    <slot />
+    <div :class="{ disabled: !video }" class="w-full">
+      <slot />
+    </div>
+    <slot name="action" />
   </div>
 </template>
 
@@ -36,11 +50,5 @@ h1 {
 
 .disabled {
   pointer-events: none;
-}
-
-@media screen and (max-width: 768px) {
-  .player-container {
-    width: 100vw;
-  }
 }
 </style>

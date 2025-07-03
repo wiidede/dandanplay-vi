@@ -24,16 +24,16 @@ watch(() => activeName.value, (path) => {
 
 <template>
   <header relative flex select-none items-center gap4 p-x-4>
-    <router-link to="/" class="flex items-center gap4">
-      <div i-the-dandanplay-vi class="inline-block flex-shrink-0 text-primary" />
-      <span class="header-title">DanDanPlay Vi</span>
+    <router-link to="/" class="flex items-center">
+      <div i-the-dandanplay-vi class="me-2 inline-block flex-shrink-0 text-primary" />
+      <span class="header-title">弹弹Play Web</span>
     </router-link>
     <el-tabs v-model="activeName" class="header-tabs flex-auto overflow-hidden">
       <el-tab-pane v-for="menu in menuList" :key="menu.name" :label="menu.label" :name="menu.path" />
     </el-tabs>
     <a href="https://www.dandanplay.com/" target="_blank" lt-sm:hidden>
       <button class="flex items-center bg-transparent hover:filter-drop-shadow">
-        <div i-the-dandanplay-vi class="inline-block flex-shrink-0 text-dandan" />
+        <div i-the-dandanplay-vi class="me-1 inline-block flex-shrink-0 text-dandan" />
         弹弹play官网
       </button>
     </a>

@@ -3,12 +3,12 @@ const emit = defineEmits(['manualMatch', 'manualMatchXml'])
 </script>
 
 <template>
-  <div w-full flex justify-center gap-2>
+  <div class="w-full flex justify-end gap-4">
     <div cursor-pointer color-gray @click="emit('manualMatch')">
       手动匹配
     </div>
     <div cursor-pointer color-gray @click="emit('manualMatchXml')">
-      手动匹配XML
+      手动添加XML
     </div>
   </div>
 </template>

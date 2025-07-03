@@ -35,7 +35,7 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
       <UploadFilled />
     </el-icon>
     <div class="el-upload__text">
-      移动视频至此或<em>点击上传</em>即可开始匹配视频信息
+      移动本地视频至此或<em>点击上传</em>即可开始匹配视频信息
     </div>
     <template #tip>
       <ol>
