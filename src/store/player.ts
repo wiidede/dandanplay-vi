@@ -25,6 +25,9 @@ export const usePlayerStore = defineStore('play-player', () => {
     videoInfo.value.raw = file
     videoInfo.value.name = file.name
     videoInfo.value.size = file.size
+    videoInfo.value.md5 = null
+    match.value = undefined
+    comments.value = []
   }
 
   return { video, videoInfo, match, comments, setVideo }
