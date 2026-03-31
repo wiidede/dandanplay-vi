@@ -71,19 +71,6 @@ export default defineConfig({
     environment: 'jsdom',
   },
 
-  server: {
-    // host: '0.0.0.0',
-    port: 9000,
-    open: true,
-    proxy: { // 反向代理
-      '/proxy': {
-        target: 'https://api.dandanplay.net/api/v2/',
-        changeOrigin: true,
-        rewrite: rePath => rePath.replace(/^\/proxy/, ''),
-      },
-    },
-  },
-
   worker: {
     format: 'es',
   },
