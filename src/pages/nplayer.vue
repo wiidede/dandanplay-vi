@@ -26,7 +26,6 @@ onBeforeUnmount(() => {
 function handleResult(res: CommentResult) {
   if (res.count) {
     comments.value = res.comments.map(dandan2nPlayer).sort((a, b) => a.time - b.time)
-    elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)
     player.danmaku.resetItems(comments.value)
     player.play()
   }
@@ -44,11 +43,8 @@ watch(video, (val) => {
 </script>
 
 <template>
-  <player-layout>
+  <player-layout @manual-match-xml="handleResult">
     <div ref="playerRef" h-full w-full />
-    <template #action>
-      <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
-    </template>
   </player-layout>
 </template>
 

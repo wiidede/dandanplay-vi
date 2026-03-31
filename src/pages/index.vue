@@ -7,15 +7,15 @@ const settingsStore = useSettingsStore()
 const { player } = storeToRefs(settingsStore)
 const playerStore = usePlayerStore()
 const { video, videoInfo } = storeToRefs(playerStore)
+
 watch(video, (val) => {
   if (val) {
-    elNotify.info(`读取文件：${videoInfo.value.name}`)
+    playerStore.updateMatchStep('md5', 'loading', '计算文件MD5中...')
     videoInfo.value.md5 = ''
     worker.postMessage(videoInfo.value.raw)
     router.push(player.value)
     setTimeout(async () => {
       if (!videoInfo.value.md5) {
-        elNotify.warning('md5后台计算3s没有响应，开始在主线程计算')
         worker.terminate()
         videoInfo.value.md5 = await calcDandanMd5(videoInfo.value.raw!)
       }

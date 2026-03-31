@@ -6,4 +6,5 @@ export interface IMatch {
   type: string
   typeDescription: string
   shift: number
+  imageUrl?: string
 }

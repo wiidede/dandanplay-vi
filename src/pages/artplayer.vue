@@ -21,7 +21,6 @@ onMounted(() => {
     subtitleOffset: true,
     plugins: [
       ArtPlayerComment({
-        // 弹幕数组
         danmuku: [],
       }),
     ],
@@ -34,7 +33,6 @@ onBeforeUnmount(() => {
 function handleResult(res: CommentResult) {
   if (res.count) {
     comments.value = res.comments.map(dandan2artPlayer)
-    elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)
     // @ts-expect-error unknown type
     player.plugins.artplayerPluginDanmuku.config({
       danmuku: comments.value,
@@ -54,11 +52,8 @@ watch(video, (val) => {
 </script>
 
 <template>
-  <player-layout>
+  <player-layout @manual-match-xml="handleResult">
     <div ref="playerRef" h-full w-full />
-    <template #action>
-      <ActionLayout @manual-match="manualMatchComment(handleResult)" @manual-match-xml="manualMatchCommentXML(handleResult)" />
-    </template>
   </player-layout>
 </template>
 
