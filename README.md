@@ -1,8 +1,8 @@
-# dandanplay vi
+# dandanplay web
 
-在浏览器中看本地视频弹幕 —— 弹弹play Web简易实现，无需安装，即开即用
+弹弹play Web简易实现，在浏览器中看本地视频弹幕，无需安装，即开即用
 
-本项目基于弹弹play开放平台，完整功能请访问[弹弹play官网](https://www.dandanplay.com/)。
+本项目基于弹弹play开放平台，更多功能请访问[弹弹play官网](https://www.dandanplay.com/)。
 
 ## [Site](https://dandan.wiidede.space/)
 
