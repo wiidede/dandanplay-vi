@@ -402,7 +402,7 @@ h1 {
   margin-top: 8px;
   min-width: 320px;
   max-width: 400px;
-  background: var(--el-bg-color-overlay);
+  background: var(--el-bg-color);
   border: 1px solid var(--el-border-color);
   border-radius: 8px;
   box-shadow: var(--el-box-shadow-light);
@@ -556,9 +556,6 @@ h1 {
 }
 
 .manual-match-section {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--el-border-color-lighter);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -566,7 +563,7 @@ h1 {
 }
 
 .manual-match-section .el-divider {
-  margin: 0;
+  margin: 12px 0;
   width: 100%;
 }
 
