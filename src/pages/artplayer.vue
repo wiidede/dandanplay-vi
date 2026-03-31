@@ -35,9 +35,11 @@ function handleResult(res: CommentResult) {
   if (res.count) {
     comments.value = res.comments.map(dandan2artPlayer)
     elNotify.info(`弹幕匹配成功：共${res.count}条弹幕`)
+    // @ts-expect-error unknown type
     player.plugins.artplayerPluginDanmuku.config({
       danmuku: comments.value,
     })
+    // @ts-expect-error unknown type
     player.plugins.artplayerPluginDanmuku.load()
     player.play()
   }
