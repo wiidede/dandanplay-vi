@@ -1,0 +1,8 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
+allowBuilds:
+  esbuild: true
+shamefully-hoist: true
+strict-peer-dependencies: false
