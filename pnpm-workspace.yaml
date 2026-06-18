@@ -1,6 +1,12 @@
+minimumReleaseAgeExclude:
+  - '@wiidede/dan-player'
+minimumReleaseAgeStrict: true
 shellEmulator: true
 
 trustPolicy: no-downgrade
+trustPolicyExclude:
+  - chokidar@4.0.3 # See https://github.com/paulmillr/chokidar/issues/1440
+  - semver@6.3.1 # See https://github.com/npm/node-semver/issues/838
 
 allowBuilds:
   esbuild: true
