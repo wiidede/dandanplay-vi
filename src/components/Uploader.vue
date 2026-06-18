@@ -58,7 +58,7 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
           <el-link href="https://github.com/wiidede/dan-player" target="_blank" class="!v-unset">
             @wiidede/dan-player
           </el-link>
-          这个播放器是我个人创建的，支持解析mkv字幕，使用CCL作为弹幕播放，如有任何问题，请提交
+          这个播放器是我个人创建的，支持解析mkv字幕，使用danmu引擎作为弹幕播放引擎，如有任何问题，请提交
           <el-link href="https://github.com/wiidede/dan-player/issues" target="_blank" class="!v-unset">
             issues
           </el-link>
