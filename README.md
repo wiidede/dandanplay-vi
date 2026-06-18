@@ -4,18 +4,18 @@
 
 本项目基于弹弹play开放平台，更多功能请访问[弹弹play官网](https://www.dandanplay.com/)。
 
-## [Site](https://dandan.wiidede.space/)
+## [访问网站](https://dandan.wiidede.space/)
 
-## Feature
+## 功能介绍
 
 ### 核心功能
 
 - **本地视频播放** - 支持上传本地视频文件（支持 mkv、mp4 等常见格式），在浏览器中直接播放
 - **弹幕自动匹配** - 基于弹弹play开放平台API，通过文件MD5自动匹配对应的番剧和弹幕
 - **多播放器支持** - 提供三种播放器可选：
-  - **dan-player**（默认）- 基于 CCL 弹幕引擎，支持解析 MKV 内嵌字幕
-  - **NPlayer** - 功能丰富的 HTML5 播放器，支持弹幕设置
-  - **ArtPlayer** - 现代化的播放器，支持多种插件扩展
+  - **[dan-player](https://github.com/wiidede/dan-player)**（默认）- 基于 [danmu](https://github.com/imtaotao/danmu) 弹幕引擎，支持解析 MKV 内嵌字幕
+  - **[NPlayer](https://github.com/woopen/nplayer)** - 功能丰富的 HTML5 播放器，支持弹幕设置
+  - **[ArtPlayer](https://github.com/zhw2590582/ArtPlayer)** - 现代化的播放器，支持多种插件扩展
 
 ### 弹幕功能
 
@@ -44,7 +44,6 @@
 
 - [ ] 登录
 - [ ] 发送弹幕
-- [ ] 上传多个文件（不知道浏览器会不会出异常，只是为了能一次上传看几集，并做不到windows app那样，有媒体库）
 - [ ] 其他接口的对接
 
 ## 支持我
