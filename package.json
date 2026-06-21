@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@11.7.0",
+  "packageManager": "pnpm@11.8.0",
   "scripts": {
     "build": "vite build",
     "dev": "vite --port 3333 --open",
@@ -17,7 +17,7 @@
     "@nplayer/danmaku": "^1.0.12",
     "@unocss/eslint-plugin": "^66.7.2",
     "@vueuse/core": "^14.3.0",
-    "@wiidede/dan-player": "^0.5.1",
+    "@wiidede/dan-player": "^0.5.2",
     "artplayer": "^5.4.0",
     "artplayer-plugin-danmuku": "^5.3.0",
     "assjs": "^0.1.8",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^9.0.0",
     "@iconify-json/carbon": "^1.2.23",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.0",
     "@types/nprogress": "^0.2.3",
     "@types/spark-md5": "^3.0.5",
     "@types/tinycolor2": "^1.4.6",
@@ -44,7 +44,7 @@
     "eslint": "^10.5.0",
     "eslint-plugin-format": "^2.0.1",
     "jsdom": "^29.1.1",
-    "pnpm": "^11.7.0",
+    "pnpm": "^11.8.0",
     "taze": "^19.14.1",
     "type-fest": "^5.7.0",
     "typescript": "^6.0.3",
