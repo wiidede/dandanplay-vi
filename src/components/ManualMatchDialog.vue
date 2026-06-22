@@ -8,6 +8,7 @@ const emit = defineEmits<{
 
 const visible = defineModel<boolean>('visible', { default: false })
 
+const uploadRef = ref()
 const xml = ref('')
 const clipboardError = ref('')
 
@@ -15,6 +16,7 @@ watch(visible, (val) => {
   if (val) {
     xml.value = ''
     clipboardError.value = ''
+    nextTick(() => uploadRef.value?.clearFiles())
   }
 })
 
@@ -76,11 +78,11 @@ function handleConfirm() {
   >
     <div class="flex flex-col gap-3">
       <el-upload
+        ref="uploadRef"
         drag
         action="#"
         accept=".xml,application/xml,text/xml"
         :show-file-list="false"
-        :limit="1"
         :auto-upload="false"
         :on-change="handleFileChange"
       >
