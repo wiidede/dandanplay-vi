@@ -63,3 +63,30 @@ describe('dandan2CCL', () => {
       expect(dandan2CCL(test.input)).toEqual(test.expected)
   })
 })
+
+describe('parseBiliXml', () => {
+  it('should parse a valid bilibili xml string', () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+      <i>
+        <d p="1.5,1,25,16777215,0,0,abc,0">hello</d>
+        <d p="2,4,25,255,0,0,def,0"> world </d>
+      </i>`
+    const res = parseBiliXml(xml)
+    expect(res).toEqual({
+      count: 2,
+      comments: [
+        { cid: 0, p: '1.5,1,16777215,0', m: 'hello' },
+        { cid: 1, p: '2,4,255,0', m: 'world' },
+      ],
+    })
+  })
+
+  it('should return count 0 when there are no comment nodes', () => {
+    const res = parseBiliXml('<i></i>')
+    expect(res).toEqual({ count: 0, comments: [] })
+  })
+
+  it('should return null for invalid xml', () => {
+    expect(parseBiliXml('not <xml')).toBeNull()
+  })
+})

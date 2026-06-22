@@ -1,4 +1,4 @@
-import type { ICommentArt, ICommentCCL, ICommentN, ICommentRaw } from '~/typings/comment'
+import type { CommentResult, ICommentArt, ICommentCCL, ICommentN, ICommentRaw } from '~/typings/comment'
 import SparkMD5 from 'spark-md5'
 
 const dan2nTypeMap = {
@@ -43,6 +43,27 @@ export function dandan2CCL(danComment: ICommentRaw) {
     size: 25,
   }
   return CCLComment
+}
+
+/**
+ * 解析 B 站 XML 格式弹幕字符串为 CommentResult。
+ * 解析失败（非合法 XML）时返回 null。
+ */
+export function parseBiliXml(xml: string): CommentResult | null {
+  const doc = new DOMParser().parseFromString(xml, 'application/xml')
+  if (doc.querySelector('parsererror'))
+    return null
+  const nodeList = Array.from(doc.documentElement.childNodes)
+    .filter(node => node.nodeName === 'd')
+  return {
+    count: nodeList.length,
+    comments: nodeList.map((node, index) => ({
+      cid: index,
+      p: ((node as Element).attributes.getNamedItem('p')?.value ?? '')
+        .replace(/^([\d.]+),(\d+),\d+,(\d+),.*$/, '$1,$2,$3,0'),
+      m: node.textContent?.trim() || '',
+    })),
+  }
 }
 
 export function calcDandanMd5(file: File) {

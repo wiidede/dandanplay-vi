@@ -37,19 +37,25 @@ const statusText = computed(() => {
     return '获取弹幕中...'
   if (commentStep?.status === 'success')
     return `共装填${commentCount.value}条弹幕`
-  if (fileStep?.status === 'error' || commentStep?.status === 'error')
+  if (fileStep?.status === 'error')
     return '匹配失败，点击查看详情'
+  if (commentStep?.status === 'error')
+    return '获取弹幕失败'
   return ''
 })
 
 const hasError = computed(() => {
+  const commentStep = matchSteps.value.find(s => s.id === 'comment')
+  if (commentStep?.status === 'success')
+    return false
   return matchSteps.value.some(s => s.status === 'error')
 })
 
 const showSuccessIcon = computed(() => {
-  const fileStep = matchSteps.value.find(s => s.id === 'file')
   const commentStep = matchSteps.value.find(s => s.id === 'comment')
-  return fileStep?.status === 'success' && commentStep?.status !== 'success'
+  if (commentStep?.status === 'success')
+    return true
+  return matchSteps.value.some(s => s.status === 'success') && commentStep?.status !== 'error'
 })
 
 function togglePanel() {
@@ -109,32 +115,9 @@ async function retryWithNewFileName() {
   retryStep('file')
 }
 
-async function handleManualMatchXml() {
-  const inputValue = await ElMessageBox.prompt('请输入b站XML格式的字符串', '手动匹配', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-  })
-  const { value } = inputValue
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(value, 'application/xml')
-  const errorNode = doc.querySelector('parsererror')
-  if (errorNode) {
-    ElNotification({
-      title: '',
-      message: '解析XML出错，检查是否是XML格式的字符串',
-      type: 'error',
-    })
-    return
-  }
-  const nodeList = Array.from(doc.documentElement.childNodes).filter(node => node.nodeName === 'd')
-  const res: CommentResult = {
-    count: nodeList.length,
-    comments: nodeList.map((node, index) => ({
-      cid: index,
-      p: ((node as Element).attributes.getNamedItem('p')?.value ?? '').replace(/^([\d.]+),(\d+),\d+,(\d+),.*$/, '$1,$2,$3,0'),
-      m: node.textContent?.trim() || '',
-    })),
-  }
+const showManualMatchDialog = ref(false)
+
+function handleManualMatchResult(res: CommentResult) {
   playerStore.commentCount = res.count
   playerStore.updateMatchStep('comment', 'success', `导入${res.count}条弹幕`)
   isMatchPanelExpanded.value = false
@@ -317,7 +300,7 @@ async function handleManualMatchXml() {
 
               <div class="manual-match-section">
                 <el-divider>或</el-divider>
-                <el-button size="small" @click="handleManualMatchXml">
+                <el-button size="small" @click="showManualMatchDialog = true">
                   手动导入XML弹幕
                 </el-button>
               </div>
@@ -330,6 +313,8 @@ async function handleManualMatchXml() {
       <slot />
     </div>
     <slot name="action" />
+
+    <ManualMatchDialog v-model:visible="showManualMatchDialog" @matched="handleManualMatchResult" />
   </div>
 </template>
 
@@ -406,7 +391,7 @@ h1 {
   border: 1px solid var(--el-border-color);
   border-radius: 8px;
   box-shadow: var(--el-box-shadow-light);
-  z-index: 9999;
+  z-index: 9000;
 }
 
 .match-steps {
