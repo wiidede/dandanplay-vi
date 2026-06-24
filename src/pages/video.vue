@@ -16,7 +16,7 @@ usePlayer(handleResult)
 
 <template>
   <player-layout @manual-match-xml="handleResult">
-    <dan-player :src="videoInfo.raw" :comments="commentsCCL" autoplay-on-comment-load />
+    <dan-player :src="videoInfo.raw" :comments="commentsCCL" autoplay-on-comment-load locale="zh" />
   </player-layout>
 </template>
 
