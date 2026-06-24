@@ -17,7 +17,7 @@
     "@nplayer/danmaku": "^1.0.12",
     "@unocss/eslint-plugin": "^66.7.2",
     "@vueuse/core": "^14.3.0",
-    "@wiidede/dan-player": "^0.5.2",
+    "@wiidede/dan-player": "^0.5.3",
     "artplayer": "^5.4.0",
     "artplayer-plugin-danmuku": "^5.3.0",
     "assjs": "^0.1.8",

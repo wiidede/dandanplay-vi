@@ -24,8 +24,8 @@ importers:
         specifier: ^14.3.0
         version: 14.3.0(vue@3.5.38(typescript@6.0.3))
       '@wiidede/dan-player':
-        specifier: ^0.5.2
-        version: 0.5.2(vue@3.5.38(typescript@6.0.3))
+        specifier: ^0.5.3
+        version: 0.5.3(vue@3.5.38(typescript@6.0.3))
       artplayer:
         specifier: ^5.4.0
         version: 5.4.0
@@ -1646,8 +1646,8 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
-  '@wiidede/dan-player@0.5.2':
-    resolution: {integrity: sha512-qZ3cSWHbRfZ6qUmgvvbbIPctsVXPeq3xuCC69LRWG9MxONR/NjffsNqiolqKyN5tlKk72qvvyaUGU+B1ntIpDQ==}
+  '@wiidede/dan-player@0.5.3':
+    resolution: {integrity: sha512-0/bc9SZfCK6pIHcy8cL3DV3MlUt2h4UBfeulNnFEgFWw5DZ5A+DOQcZPQmFb9VtXXrzOfp0MCfef0mrGCdMqJg==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -5212,7 +5212,7 @@ snapshots:
     dependencies:
       vue: 3.5.38(typescript@6.0.3)
 
-  '@wiidede/dan-player@0.5.2(vue@3.5.38(typescript@6.0.3))':
+  '@wiidede/dan-player@0.5.3(vue@3.5.38(typescript@6.0.3))':
     dependencies:
       '@vueuse/core': 14.3.0(vue@3.5.38(typescript@6.0.3))
       '@vueuse/math': 14.3.0(vue@3.5.38(typescript@6.0.3))
