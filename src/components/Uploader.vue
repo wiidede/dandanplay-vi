@@ -17,6 +17,19 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
   if (video)
     setVideo(video)
 }
+
+function pickAnyFile() {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = '*/*'
+  input.onchange = (e: Event) => {
+    const file = (e.target as HTMLInputElement).files?.[0]
+    if (file)
+      setVideo(file)
+    input.value = ''
+  }
+  input.click()
+}
 </script>
 
 <template>
@@ -39,6 +52,12 @@ const handleChange: UploadProps['onChange'] = (uploadFile) => {
     </div>
     <template #tip>
       <ol>
+        <li class="el-upload__tip">
+          无法选中想要的视频文件？试试更宽松的：
+          <el-link type="primary" class="!v-unset" @click="pickAnyFile">
+            点此上传文件
+          </el-link>
+        </li>
         <li class="el-upload__tip">
           本网站只是通过
           <el-link type="primary" href="https://api.dandanplay.net/swagger" target="_blank" class="!v-unset">
